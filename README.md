@@ -15,7 +15,7 @@ wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.
 - GRUB_SAVEDEFAULT=true
 - GRUB_DISABLE_SUBMENU=y
 ### Information About GRUB Configuration
-- **You have to write this command on terminal to apply changes**: sudo grub-mkconfig -o /boot/grub/grub.cfg
+- **You have to execute this command in terminal to apply changes**: sudo grub-mkconfig -o /boot/grub/grub.cfg
 - CPU mitigations reduce performance by 30% on these CPUs:
   - **AMD**: Zen 1, Zen 1+, Zen 2
   - **Intel**: 6th, 7th and 8th Generation
