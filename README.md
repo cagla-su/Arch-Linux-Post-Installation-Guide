@@ -68,4 +68,31 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
     - [zram0]
     - zram-size = 8192
   - sudo systemctl restart systemd-zram-setup@zram0.service
-## 
+## Picom Configuration
+- After installing Picom, you have to disable XFCE's default compositor via following these steps:
+  - Settings Manager - Window Manager Tweaks - Compositor - Enable Display Compositing (untick the box)
+- After these steps, write these commands on terminal:
+  - sudo nano ~/.config/picom.conf
+    - backend = "glx";
+    - glx-no-stencil = true;
+    - fading = true;
+    - vsync = true;
+- And reboot your system to apply changes. You can set keybinds to disable and enable Picom since you might want to disable compositor while gaming to gain better performance. You can set keybinds using these steps:
+  - **To Disable Picom**: Settings Manager - Keyboard - Application Shortcuts - Add - Command: killall picom - Command Shortcut: Your preferred key combination
+  - **To Enable Picom**: Settings Manager - Keyboard - Application Shortcuts - Add - Command: picom - Command Shortcut: Your preferred key combination
+## SDDM For XFCE
+- SDDM looks better than LightDM, so why wouldn't we use it instead? :) I'm going to be using [Catppuccin SDDM](https://github.com/catppuccin/sddm/releases).
+- **Needed Packages**: sudo pacman -S sddm qt6-svg qt6-declarative
+- **Disable LightDM and enable SDDM**: sudo systemctl disable lightdm.service && sudo systemctl enable sddm.service
+- **Add Catppuccin Theme**: Extract .zip file on your downloads directory and apply this command: cd Downloads && sudo cp -r catppuccin-frappe /usr/share/sddm/themes/
+- **Let's Edit SDDM**: sudo nano /etc/sddm.conf.d/
+  - [Theme]
+  - # Current theme name
+  - Current=catppuccin-frappe (for example if you installed catppuccin-mocha, type catppuccin-mocha instead)
+- And reboot your computer to apply changes.
+## Dolby Atmos Setup (EasyEffects) - [Reference](https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/)
+- After launching EasyEffects and setting it to launch at boot from app settings, download [this .zip file](https://www.mediafire.com/file/qt9znutry7fgzk7/dolby.zip/file) for Dolby Atmos presets.
+- After downloading and extracting the .zip file, move the folder to a location you will remember the path of.
+- Next, in EasyEffects, open **Effects** page and click on **Add Effect**. Then, add a **Convolver** and click on convolver.
+- Click on **Impulses** and then **Import Impulse**, now add all of the .irs files you downloaded.
+- Last, on **Impulses** page, it will be enough to load one of the presets (you can switch between presets).
