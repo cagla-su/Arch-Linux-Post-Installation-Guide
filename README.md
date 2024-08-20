@@ -40,3 +40,25 @@ GRUB_DISABLE_SUBMENU=y
   - Option "RelaxedFencing" "false"
   - Option "BufferCache" "true"
   - EndSection
+## Install Necessary Packages For XFCE
+sudo pacman -S unrar unzip intel-ucode ufw tlp throttled fwupd fastfetch alsa-tools easyeffects vlc noto-fonts-cjk noto-fonts-emoji pavucontrol capitaine-cursors picom xarchiver mousepad && paru -S xfce4-panel-profiles xfce4-docklike-plugin flat-remix-gtk && sudo systemctl enable --now tlp.service && sudo systemctl enable --now throttled.service && sudo systemctl enable --now ufw.service
+- You don't have to install these packages:
+  - **intel-ucode**: if you don't have an Intel CPU
+  - **ufw**: if you don't want to enable firewall
+  - **tlp**: if you don't want to have better battery life. Use **power-profiles-daemon** if you only want to have high performance
+  - **throttled**: if you either don't have an Intel CPU or if you don't want to undervolt your CPU + iGPU
+  - **fwupd**: if your computer is not supported by fwupd for firmware updates
+## Install Other Packages - Gaming and Utilities
+sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop heroic-games-launcher prismlauncher joplin-desktop spectacle obs-studio onlyoffice shotcut okular && paru -S nomacs ptyxis spotify zoom
+### For Gamemode
+- Install the .ini file from [the link](https://github.com/FeralInteractive/gamemode/blob/master/example/gamemode.ini) and move it to the correct directory via these steps:
+  - cd Downloads
+    - sudo mv gamemode.ini /etc/
+ ## Configure Fish (Optional)
+ - If you would like your terminal to predict what you are going to type with colorful letters, you might want to use Fish for your terminal.
+   - sudo pacman -S fish
+   - chsh -s /usr/bin/fish (you have to reboot after this command for next commands to work)
+     - function fish_greeting
+     - fastfetch
+     - end
+   - funcsave fish_greeting
