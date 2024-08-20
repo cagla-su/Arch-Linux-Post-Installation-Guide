@@ -85,9 +85,9 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
 - **Needed Packages**: sudo pacman -S sddm qt6-svg qt6-declarative
 - **Disable LightDM and enable SDDM**: sudo systemctl disable lightdm.service && sudo systemctl enable sddm.service
 - **Add Catppuccin Theme**: Extract .zip file on your downloads directory and apply this command: **cd Downloads && sudo cp -r catppuccin-frappe /usr/share/sddm/themes/**
-- **Let's Edit SDDM**: sudo nano /etc/sddm.conf.d/
+### Let's Edit SDDM
+- **Location**: sudo nano /etc/sddm.conf.d/
   - [Theme]
-  - # Current theme name
   - Current=catppuccin-frappe (for example if you installed catppuccin-mocha, type catppuccin-mocha instead)
 - And reboot your computer to apply changes.
 ## Dolby Atmos Setup (EasyEffects) - [Reference](https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/)
