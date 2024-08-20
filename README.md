@@ -131,7 +131,7 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
 ## Picom Configuration
 - After installing Picom, you have to **disable XFCE's default compositor** via following these steps:
   - Settings Manager - Window Manager Tweaks - Compositor - Enable Display Compositing (untick the box)
-- After these steps, write these commands on terminal:
+- After these steps, execute these commands in terminal:
   - sudo nano ~/.config/picom.conf
     - backend = "glx";
     - glx-no-stencil = true;
