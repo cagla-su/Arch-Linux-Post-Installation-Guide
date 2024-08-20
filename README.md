@@ -1,5 +1,5 @@
 # Çıt's Arch Linux Post-Installation Guide (XFCE) - Thinkpad T490
-Hello. I wrote this guide for **Thinkpad T490 and XFCE specifically**, however you can still follow all the steps if you don't have the same computer as I have. So, let's begin!
+Hello. I wrote this guide for **Thinkpad T490 and XFCE specifically**, however you can still follow **almost** all the steps if you don't have the same computer as I have. So, let's begin!
 
 ## Install AUR Helper
 Normally, everyone prefers **yay** but I prefer **paru** since it is written in **rust**.
