@@ -17,7 +17,7 @@ GRUB_DISABLE_SUBMENU=y
 ### Information About GRUB Configuration
 - **You have to apply this command to apply changes**: sudo grub-mkconfig -o /boot/grub/grub.cfg
 - CPU mitigations reduce performance by 30% on these CPUs:
-  - **AMD**: Zen 1, Zen 1+, Zen 2
-  - **Intel**: 6th, 7th and 8th Generation
-This is why you might want to disable mitigations via **mitigations=off** kernel parameter especially if you're gaming. However, disabled mitigations might introduce security risks. If you care about security more than performance, do not disable mitigations.
+    - **AMD**: Zen 1, Zen 1+, Zen 2
+    - **Intel**: 6th, 7th and 8th Generation
+  - This is why you might want to disable mitigations via **mitigations=off** kernel parameter especially if you're gaming. However, disabled mitigations might introduce security risks. If you care about security more than performance, do not disable mitigations.
 ## Intel iGPU Configuration For X11
