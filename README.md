@@ -69,7 +69,7 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
     - zram-size = 8192
   - sudo systemctl restart systemd-zram-setup@zram0.service
 ## Picom Configuration
-- After installing Picom, you have to disable XFCE's default compositor via following these steps:
+- After installing Picom, you have to **disable XFCE's default compositor** via following these steps:
   - Settings Manager - Window Manager Tweaks - Compositor - Enable Display Compositing (untick the box)
 - After these steps, write these commands on terminal:
   - sudo nano ~/.config/picom.conf
@@ -84,7 +84,7 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
 - SDDM looks better than LightDM, so why wouldn't we use it instead? :) I'm going to be using [Catppuccin SDDM](https://github.com/catppuccin/sddm/releases).
 - **Needed Packages**: sudo pacman -S sddm qt6-svg qt6-declarative
 - **Disable LightDM and enable SDDM**: sudo systemctl disable lightdm.service && sudo systemctl enable sddm.service
-- **Add Catppuccin Theme**: Extract .zip file on your downloads directory and apply this command: cd Downloads && sudo cp -r catppuccin-frappe /usr/share/sddm/themes/
+- **Add Catppuccin Theme**: Extract .zip file on your downloads directory and apply this command: **cd Downloads && sudo cp -r catppuccin-frappe /usr/share/sddm/themes/**
 - **Let's Edit SDDM**: sudo nano /etc/sddm.conf.d/
   - [Theme]
   - # Current theme name
