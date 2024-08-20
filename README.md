@@ -54,17 +54,18 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
 - Download the .ini file from [the link](https://github.com/FeralInteractive/gamemode/blob/master/example/gamemode.ini) and move it to the correct directory via these steps:
   - cd Downloads
     - sudo mv gamemode.ini /etc/
- ## Configure Fish (Optional)
- - If you would like your terminal to predict what you are going to type with colorful letters, you might want to use Fish for your terminal.
-   - sudo pacman -S fish
-   - chsh -s /usr/bin/fish (you have to reboot after this command for next commands to work)
-     - function fish_greeting
-     - fastfetch
-     - end
-   - funcsave fish_greeting
-  ## ZRAM Size Increase (Optional)
-  - For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
-    - sudo nano /etc/systemd/zram-generator.conf
-      - [zram0]
-      - zram-size = 8192
-    - sudo systemctl restart systemd-zram-setup@zram0.service
+## Configure Fish (Optional)
+- If you would like your terminal to predict what you are going to type with colorful letters, you might want to use Fish for your terminal.
+  - sudo pacman -S fish
+  - chsh -s /usr/bin/fish (you have to reboot after this command for next commands to work)
+    - function fish_greeting
+    - fastfetch
+    - end
+  - funcsave fish_greeting
+## ZRAM Size Increase (Optional)
+- For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
+  - sudo nano /etc/systemd/zram-generator.conf
+    - [zram0]
+    - zram-size = 8192
+  - sudo systemctl restart systemd-zram-setup@zram0.service
+## 
