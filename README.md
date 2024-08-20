@@ -93,7 +93,7 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
   - TPACPI_ENABLE=1 (Battery care driver for **Thinkpads only**)
   - TPSMAPI_ENABLE=1 (Battery care driver for **Thinkpads only**)
 ## Throttled Configuration (DO NOT USE THROTTLED IF YOU DON'T HAVE AN INTEL CPU)
-- Throttled was actually first started as a project to solve throttling issues due to a bug in Linux on Thinkpads, however now it seems to be fixing the same issue on other laptops as well. If you have an Intel CPU that supports **undervolting**, then you can use Throttled to prevent overheating. However, the values I'll be giving you are **WRITTEN FOR THINKPAD T490 (Intel Core i5-8265U) SPECIFICALLY, DO NOT APPLY THE SAME VALUES IF YOU HAVE DIFFERENT HARDWARE**"
+- [Throttled](https://github.com/erpalma/throttled) was actually first started as a project to solve throttling issues due to a bug in Linux on Thinkpads, however now it seems to be fixing the same issue on other laptops as well. If you have an Intel CPU that supports **undervolting**, then you can use Throttled to prevent overheating. However, the values I'll be giving you are **WRITTEN FOR THINKPAD T490 (Intel Core i5-8265U) SPECIFICALLY, DO NOT APPLY THE SAME VALUES IF YOU HAVE DIFFERENT HARDWARE**
 - **Location**: sudo nano /etc/throttled.conf
   - [BATTERY]
     - Trip_Temp_C: 60
