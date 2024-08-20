@@ -62,3 +62,9 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
      - fastfetch
      - end
    - funcsave fish_greeting
+  ## ZRAM Size Increase (Optional)
+  - For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
+    - sudo nano /etc/systemd/zram-generator.conf
+      - [zram0]
+      - zram-size = 8192
+    - sudo systemctl restart systemd-zram-setup@zram0.service
