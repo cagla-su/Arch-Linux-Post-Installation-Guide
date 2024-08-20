@@ -52,9 +52,8 @@ sudo pacman -S unrar unzip intel-ucode ufw tlp throttled fwupd fastfetch alsa-to
 ## Install Other Packages - Gaming and Utilities
 sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop heroic-games-launcher prismlauncher joplin-desktop spectacle obs-studio onlyoffice shotcut okular && paru -S nomacs ptyxis spotify zoom
 ### For Gamemode
-- Download the .ini file from [the link](https://github.com/FeralInteractive/gamemode/blob/master/example/gamemode.ini) and move it to the correct directory via these steps:
-  - cd Downloads
-    - sudo mv gamemode.ini /etc/
+- Download the .ini file from [the link](https://github.com/FeralInteractive/gamemode/blob/master/example/gamemode.ini) and move it to the correct directory via this command:
+  - cd Downloads && sudo mv gamemode.ini /etc/
 ## Configure Fish (Optional)
 - If you would like your terminal to predict what you are going to type with colorful letters, you might want to use Fish for your terminal.
   - sudo pacman -S fish
