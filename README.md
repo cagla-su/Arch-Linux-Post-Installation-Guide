@@ -90,6 +90,10 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
   - [Theme]
   - Current=catppuccin-frappe (for example if you installed catppuccin-mocha, type catppuccin-mocha instead)
 - And reboot your computer to apply changes.
+## XFCE Ricing
+- After applying your preferred (or the ones I installed) desktop and icon themes, you might want to make rices. However, if you would like an already made panel preset, here is [mine](https://drive.google.com/file/d/1ef-N87La8UkVuTtwFG6oRucCx9G8ujA3/view?usp=sharing)
+- If you preferred using my panel preset, you can apply it following these steps:
+  - Settings Manager - Panel Profiles - Import - Preset File - Çıt - Apply
 ## Dolby Atmos Setup (EasyEffects) - [Reference](https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/)
 - After launching EasyEffects and setting it to launch at boot from app settings, download [this .zip file](https://www.mediafire.com/file/qt9znutry7fgzk7/dolby.zip/file) for Dolby Atmos presets.
 - After downloading and extracting the .zip file, move the folder to a location you will remember the path of.
