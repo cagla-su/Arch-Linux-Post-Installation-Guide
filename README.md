@@ -22,7 +22,7 @@ wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.
   - This is why you might want to disable mitigations via **mitigations=off** kernel parameter especially if you're gaming. However, disabled mitigations might introduce security risks. If you care about security more than performance, do not disable mitigations.
 - If you will be using **only one kernel** that you installed while installing Arch, you don't have to change the stats of **GRUB_DEFAULT**, **GRUB_SAVEDEFAULT** and **GRUB_DISABLE_SUBMENU** 
 ## Intel iGPU Configuration For X11
-- Some projects such as Debian, Fedora, KDE, Mozilla suggest **modesetting** driver instead of using **xf86-video-intel** with **intel** driver as it is known to have problems with lower performance. However, using **modesetting** driver can cause issues such as **screen tearing** but we'll be using **Picom** with vsync on, so screen tearing won't be an issue as long as Picom is running.
+- Some projects such as **Debian, Fedora, KDE and Mozilla** suggest **modesetting** driver instead of using **xf86-video-intel** with **intel** driver as it is known to have problems with lower performance. However, using **modesetting** driver can cause issues such as **screen tearing** but we'll be using **Picom** with vsync on, so screen tearing won't be an issue as long as Picom is running.
 - **Terminal Command For Intel Configuration**: sudo nano /etc/X11/xorg.conf.d/20-intel.conf
   - Section "Device"
   - Identifier "Intel Graphics"
