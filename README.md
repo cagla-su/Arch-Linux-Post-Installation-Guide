@@ -51,7 +51,7 @@ sudo pacman -S unrar unzip intel-ucode ufw tlp throttled fwupd fastfetch alsa-to
 ## Install Other Packages - Gaming and Utilities
 sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop heroic-games-launcher prismlauncher joplin-desktop spectacle obs-studio onlyoffice shotcut okular && paru -S nomacs ptyxis spotify zoom
 ### For Gamemode
-- Install the .ini file from [the link](https://github.com/FeralInteractive/gamemode/blob/master/example/gamemode.ini) and move it to the correct directory via these steps:
+- Download the .ini file from [the link](https://github.com/FeralInteractive/gamemode/blob/master/example/gamemode.ini) and move it to the correct directory via these steps:
   - cd Downloads
     - sudo mv gamemode.ini /etc/
  ## Configure Fish (Optional)
