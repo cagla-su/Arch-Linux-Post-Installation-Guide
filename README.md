@@ -54,6 +54,88 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
 ### For Gamemode
 - Download the .ini file from [the link](https://github.com/FeralInteractive/gamemode/blob/master/example/gamemode.ini) and move it to the correct directory via this command:
   - cd Downloads && sudo mv gamemode.ini /etc/
+## TLP Configuration
+- You can use **TLP-UI** instead but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is healthier to apply them manually. Also, again, **do not use TLP if you don't need battery life, using power-profiles-daemon is easier and needs no configuration!!!**
+- **Location**: sudo nano /etc/tlp.conf (make sure unchecking (removing # signs) of each option)
+  - TLP_ENABLE=1
+  - TLP_DEFAULT_MODE=BAT
+
+  - CPU_DRIVER_OPMODE_ON_AC=active
+  - CPU_DRIVER_OPMODE_ON_BAT=active
+ 
+  - CPU_SCALING_GOVERNOR_ON_AC=performance
+  - CPU_SCALING_GOVERNOR_ON_BAT=powersave
+ 
+  - CPU_ENERGY_PERF_POLICY_ON_AC=performance
+  - CPU_ENERGY_PERF_POLICY_ON_BAT=power
+ 
+  - CPU_MIN_PERF_ON_AC=0
+  - CPU_MAX_PERF_ON_AC=100
+  - CPU_MIN_PERF_ON_BAT=0
+  - CPU_MAX_PERF_ON_BAT=30
+ 
+  - CPU_BOOST_ON_AC=1 (**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST**)
+  - CPU_BOOST_ON_BAT=0 (**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST**)
+ 
+  - CPU_HWP_DYN_BOOST_ON_AC=1 (**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT DYNAMIC BOOST**)
+  - CPU_HWP_DYN_BOOST_ON_BAT=0 (**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT DYNAMIC BOOST**)
+ 
+  - NMI_WATCHDOG=0
+ 
+  - PLATFORM_PROFILE_ON_AC=performance
+  - PLATFORM_PROFILE_ON_BAT=low-power
+ 
+  - AHCI_RUNTIME_PM_ON_AC=on
+  - AHCI_RUNTIME_PM_ON_BAT=auto
+ 
+  - WIFI_PWR_ON_AC=off
+  - WIFI_PWR_ON_BAT=on
+ 
+  - WOL_DISABLE=Y
+ 
+  - SOUND_POWER_SAVE_ON_AC=0
+  - SOUND_POWER_SAVE_ON_BAT=1
+ 
+  - PCIE_ASPM_ON_AC=performance
+  - PCIE_ASPM_ON_BAT=powersupersave
+ 
+  - RUNTIME_PM_ON_AC=on
+  - RUNTIME_PM_ON_BAT=auto
+ 
+  - START_CHARGE_THRESH_BAT0=85 (**USE THIS ONLY IF YOUR LAPTOP SUPPORTS BATTERY THRESHOLDS AND IF YOU WANT TO USE THIS FEATURE**)
+  - STOP_CHARGE_THRESH_BAT0=90 (**USE THIS ONLY IF YOUR LAPTOP SUPPORTS BATTERY THRESHOLDS AND IF YOU WANT TO USE THIS FEATURE**)
+ 
+  - NATACPI_ENABLE=1 (Battery care driver for **all supported laptops**)
+  - TPACPI_ENABLE=1 (Battery care driver for **Thinkpads only**)
+  - TPSMAPI_ENABLE=1 (Battery care driver for **Thinkpads only**)
+## Throttled Configuration (DO NOT USE THROTTLED IF YOU DON'T HAVE INTEL CPU)
+- Throttled was actually first started as a project to solve throttling issues due to a bug in Linux on Thinkpads, however now it seems to be fixing the same issue on other laptops as well. If you have an Intel CPU that supports **undervolting**, then you can use Throttled to prevent overheating. However, the values I'll be giving you are **WRITTEN FOR THINKPAD T490 SPECIFICALLY, DO NOT APPLY THE SAME VALUES IF YOU HAVE DIFFERENT HARDWARE**"
+- **Location**: sudo nano /etc/throttled.conf
+  - [BATTERY]
+    - Trip_Temp_C: 60
+    - cTDP: 1
+    - Disable_BDPROCHOT: False
+  - [AC]
+    - Trip_Temp_C: 80
+    - HWP_Mode: True
+    - cTDP: 2
+    - Disable_BDPROCHOT: False
+  - [UNDERVOLT.BATTERY]
+    - CORE: -80
+    - GPU: -80
+    - CACHE: -80
+    - UNCORE: -40
+  - [UNDERVOLT.AC]
+    - CORE: -60
+    - GPU: -60
+    - CACHE: -60
+    - UNCORE: -40
+## ZRAM Size Increase (Optional) 
+- For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
+  - sudo nano /etc/systemd/zram-generator.conf
+    - [zram0]
+    - zram-size = 8192
+  - sudo systemctl restart systemd-zram-setup@zram0.service
 ## Configure Fish (Optional)
 - If you would like your terminal to predict what you are going to type with colorful letters, you might want to use Fish for your terminal.
   - sudo pacman -S fish
@@ -62,12 +144,6 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
     - fastfetch
     - end
   - funcsave fish_greeting
-## ZRAM Size Increase (Optional)
-- For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
-  - sudo nano /etc/systemd/zram-generator.conf
-    - [zram0]
-    - zram-size = 8192
-  - sudo systemctl restart systemd-zram-setup@zram0.service
 ## Picom Configuration
 - After installing Picom, you have to **disable XFCE's default compositor** via following these steps:
   - Settings Manager - Window Manager Tweaks - Compositor - Enable Display Compositing (untick the box)
