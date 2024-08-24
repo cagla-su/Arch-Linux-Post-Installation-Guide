@@ -1,4 +1,4 @@
-# Çıt's Arch Linux Post-Installation Guide (XFCE) - Thinkpad T490
+# Çıt's Arch Linux Post-Installation Guide - Thinkpad T490
 Hello. I wrote this guide for **Thinkpad T490 and XFCE specifically**, however you can still follow **almost** all the steps if you don't have the same computer as I have. So, let's begin!
 
 ## Install AUR Helper
@@ -21,8 +21,8 @@ wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.
   - **Intel**: 6th, 7th and 8th Generation
   - This is why you might want to disable mitigations via **mitigations=off** kernel parameter especially if you're gaming. However, disabled mitigations might **introduce security risks**. If you care about **security** more than **performance**, do **not** disable mitigations.
 - If you will be using **only one kernel** that you installed while installing Arch, you don't have to change the stats of **GRUB_DEFAULT**, **GRUB_SAVEDEFAULT** and **GRUB_DISABLE_SUBMENU** because we are changing their stats to be able to switch between kernels easily.
-## Intel iGPU Configuration For X11
-- Some projects such as **Debian, Fedora, KDE and Mozilla** suggest **modesetting** driver instead of using **xf86-video-intel** with **intel** driver since intel driver is known to have problems such as freezing the system and granting poor performance. However, even though it is better, using **modesetting** driver can also cause issues such as **screen tearing** but we'll be using **Picom** with vsync on, so screen tearing won't be an issue as long as Picom is running.
+## Intel iGPU Configuration For X11/Xorg (If you're using Wayland, you can skip this step)
+- Some projects such as [Debian](https://www.phoronix.com/news/Ubuntu-Debian-Abandon-Intel-DDX), [Fedora](https://www.phoronix.com/news/Fedora-Xorg-Intel-DDX-Switch), [KDE](https://community.kde.org/Plasma/5.9_Errata#Intel_GPUs) and [Mozilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1710400) suggest **modesetting** driver instead of using **xf86-video-intel** with **intel** driver since intel driver is known to have problems such as freezing the system and granting poor performance. However, even though it is better, using **modesetting** driver can also cause issues such as **screen tearing** but we'll be using **Picom** with vsync on, so screen tearing won't be an issue as long as Picom is running.
 - **Location of Intel Configuration File**: sudo nano /etc/X11/xorg.conf.d/20-intel.conf
   - Section "Device"
   - Identifier "Intel Graphics"
@@ -41,20 +41,22 @@ wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.
   - Option "RelaxedFencing" "false"
   - Option "BufferCache" "true"
   - EndSection
-## Install Necessary Packages For XFCE
-sudo pacman -S unrar unzip intel-ucode ufw tlp fwupd fastfetch alsa-tools easyeffects vlc noto-fonts-cjk noto-fonts-emoji pavucontrol capitaine-cursors picom xarchiver mousepad && paru -S xfce4-panel-profiles xfce4-docklike-plugin flat-remix-gtk && sudo systemctl enable --now tlp.service && sudo systemctl enable --now throttled.service && sudo systemctl enable --now ufw.service
-- You don't have to install these packages:
+## Install Necessary Packages
+sudo pacman -S unrar unzip intel-ucode ufw tlp fwupd fastfetch alsa-tools easyeffects vlc noto-fonts-cjk noto-fonts-emoji && sudo systemctl enable --now tlp.service && sudo systemctl enable --now ufw.service
+- You **don't** have to install these packages:
   - **intel-ucode**: if you don't have an Intel CPU
   - **ufw**: if you don't want to enable firewall
   - **tlp**: if you don't want to have better battery life. Use **power-profiles-daemon** if you only want to have high performance
   - **fwupd**: if your computer is not supported by fwupd for firmware updates
+## Install Necessary Packages - XFCE
+sudo pacman -S pavucontrol xarchiver mousepad capitaine-cursors picom && paru -S xfce4-panel-profiles xfce4-docklike-plugin flat-remix-gtk
 ## Install Other Packages - Gaming and Utilities (Optional, these are what I use personally)
 sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop heroic-games-launcher prismlauncher joplin-desktop spectacle obs-studio onlyoffice shotcut okular && paru -S nomacs ptyxis spotify zoom
 ### For Gamemode
 - Download the .ini file from [the link](https://github.com/FeralInteractive/gamemode/blob/master/example/gamemode.ini) and move it to the correct directory via this command:
   - cd Downloads && sudo mv gamemode.ini /etc/
-## TLP Configuration
-- You can use **TLP-UI** to configure TLP via a graphical interface but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is safer to apply them manually. Also, again, **do not use TLP if you don't need battery life, because we are using TLP for the best battery life on battery mode and switch between performance and power saving modes for our laptop, using power-profiles-daemon is easier and needs no configuration!!!**
+## TLP Configuration - Power Management For Laptops
+- You can use **TLP-UI** to configure TLP via a graphical interface but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is safer to apply them manually. Also, again, **do not use TLP if you don't need battery life, because we are using TLP for the best battery life on battery mode and to switch between performance/power saving modes for our laptop, using power-profiles-daemon is easier and needs no configuration!!!**
 - **Location**: sudo nano /etc/tlp.conf (make sure unchecking (removing # signs) of each option)
   - TLP_ENABLE=1
   - TLP_DEFAULT_MODE=BAT
@@ -99,7 +101,7 @@ You can simply enable **NATACPI, TPACPI and TPSMAPI** all at once, TLP will dete
     - [zram0]
     - zram-size = 8192
   - sudo systemctl restart systemd-zram-setup@zram0.service
-## Configure Fish (Optional)
+## Configure Fish && Fastfetch (Optional)
 - If you would like your terminal to predict what you are going to type with colorful letters, you might want to use Fish for your terminal.
   - sudo pacman -S fish
   - chsh -s /usr/bin/fish #**you have to reboot after this command for next commands to work**
@@ -107,7 +109,7 @@ You can simply enable **NATACPI, TPACPI and TPSMAPI** all at once, TLP will dete
     - fastfetch
     - end
   - funcsave fish_greeting
-## Picom Configuration
+## Picom Configuration - XFCE
 - After installing Picom, you have to **disable XFCE's default compositor** via following these steps:
   - Settings Manager - Window Manager Tweaks - Compositor - Enable Display Compositing (uncheck the box)
 - After these steps, execute these commands in terminal:
