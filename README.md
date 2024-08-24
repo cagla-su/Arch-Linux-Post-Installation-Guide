@@ -33,7 +33,7 @@ wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.
   - Option "RenderAccel" "true"
   - Option "SwapbuffersWait" "false"
   - Option "DRI" "2"
-  - Option "Throttle" "false" #You don't have to use this option if you need more battery life
+  - Option "Throttle" "false" #**You don't have to use this option if you need more battery life**
   - Option "FramebufferCompression" "false"
   - Option "TripleBuffer" "false"
   - Option "Shadow" "false"
@@ -42,20 +42,19 @@ wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.
   - Option "BufferCache" "true"
   - EndSection
 ## Install Necessary Packages For XFCE
-sudo pacman -S unrar unzip intel-ucode ufw tlp throttled fwupd fastfetch alsa-tools easyeffects vlc noto-fonts-cjk noto-fonts-emoji pavucontrol capitaine-cursors picom xarchiver mousepad && paru -S xfce4-panel-profiles xfce4-docklike-plugin flat-remix-gtk && sudo systemctl enable --now tlp.service && sudo systemctl enable --now throttled.service && sudo systemctl enable --now ufw.service
+sudo pacman -S unrar unzip intel-ucode ufw tlp fwupd fastfetch alsa-tools easyeffects vlc noto-fonts-cjk noto-fonts-emoji pavucontrol capitaine-cursors picom xarchiver mousepad && paru -S xfce4-panel-profiles xfce4-docklike-plugin flat-remix-gtk && sudo systemctl enable --now tlp.service && sudo systemctl enable --now throttled.service && sudo systemctl enable --now ufw.service
 - You don't have to install these packages:
   - **intel-ucode**: if you don't have an Intel CPU
   - **ufw**: if you don't want to enable firewall
   - **tlp**: if you don't want to have better battery life. Use **power-profiles-daemon** if you only want to have high performance
-  - **throttled**: if you either don't have an Intel CPU or if you don't want to undervolt your CPU + iGPU
   - **fwupd**: if your computer is not supported by fwupd for firmware updates
-## Install Other Packages - Gaming and Utilities
+## Install Other Packages - Gaming and Utilities (Optional, these are what I use personally)
 sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop heroic-games-launcher prismlauncher joplin-desktop spectacle obs-studio onlyoffice shotcut okular && paru -S nomacs ptyxis spotify zoom
 ### For Gamemode
 - Download the .ini file from [the link](https://github.com/FeralInteractive/gamemode/blob/master/example/gamemode.ini) and move it to the correct directory via this command:
   - cd Downloads && sudo mv gamemode.ini /etc/
 ## TLP Configuration
-- You can use **TLP-UI** instead but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is healthier to apply them manually. Also, again, **do not use TLP if you don't need battery life, using power-profiles-daemon is easier and needs no configuration!!!**
+- You can use **TLP-UI** to configure TLP via a graphical interface but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is safer to apply them manually. Also, again, **do not use TLP if you don't need battery life, because we are using TLP for the best battery life on battery mode and switch between performance and power saving modes for our laptop, using power-profiles-daemon is easier and needs no configuration!!!**
 - **Location**: sudo nano /etc/tlp.conf (make sure unchecking (removing # signs) of each option)
   - TLP_ENABLE=1
   - TLP_DEFAULT_MODE=BAT
@@ -69,10 +68,10 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
   - CPU_MAX_PERF_ON_AC=100
   - CPU_MIN_PERF_ON_BAT=0
   - CPU_MAX_PERF_ON_BAT=30
-  - CPU_BOOST_ON_AC=1 (**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST**)
-  - CPU_BOOST_ON_BAT=0 (**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST**)
-  - CPU_HWP_DYN_BOOST_ON_AC=1 (**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT DYNAMIC BOOST**)
-  - CPU_HWP_DYN_BOOST_ON_BAT=0 (**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT DYNAMIC BOOST**)
+  - CPU_BOOST_ON_AC=1 #**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST**
+  - CPU_BOOST_ON_BAT=0 #**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST**
+  - CPU_HWP_DYN_BOOST_ON_AC=1 #**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT DYNAMIC BOOST**
+  - CPU_HWP_DYN_BOOST_ON_BAT=0 #**DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT DYNAMIC BOOST**
   - NMI_WATCHDOG=0
   - PLATFORM_PROFILE_ON_AC=balanced
   - PLATFORM_PROFILE_ON_BAT=low-power
@@ -87,11 +86,11 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop h
   - PCIE_ASPM_ON_BAT=powersupersave
   - RUNTIME_PM_ON_AC=on
   - RUNTIME_PM_ON_BAT=auto
-  - START_CHARGE_THRESH_BAT0=85 (**USE THIS ONLY IF YOUR LAPTOP SUPPORTS BATTERY THRESHOLDS AND IF YOU WANT TO USE THIS FEATURE**)
-  - STOP_CHARGE_THRESH_BAT0=90 (**USE THIS ONLY IF YOUR LAPTOP SUPPORTS BATTERY THRESHOLDS AND IF YOU WANT TO USE THIS FEATURE**)
-  - NATACPI_ENABLE=1 (Battery care driver for **all supported laptops**)
-  - TPACPI_ENABLE=1 (Battery care driver for **Thinkpads only**)
-  - TPSMAPI_ENABLE=1 (Battery care driver for **Thinkpads only**)
+  - START_CHARGE_THRESH_BAT0=85 #**USE THIS ONLY IF YOUR LAPTOP SUPPORTS BATTERY THRESHOLDS AND IF YOU WANT TO USE THIS FEATURE**
+  - STOP_CHARGE_THRESH_BAT0=90 #**USE THIS ONLY IF YOUR LAPTOP SUPPORTS BATTERY THRESHOLDS AND IF YOU WANT TO USE THIS FEATURE**
+  - NATACPI_ENABLE=1 #Battery care driver for **all supported laptops**
+  - TPACPI_ENABLE=1 #Battery care driver for **Thinkpads only**
+  - TPSMAPI_ENABLE=1 #Battery care driver for **Thinkpads only**
 ### Note About Battery Care Drivers
 You can simply enable **NATACPI, TPACPI and TPSMAPI** all at once, TLP will detect which one is compatible for your laptop and enable one of them automatically.
 ## ZRAM Size Increase (Optional) 
@@ -124,14 +123,14 @@ You can simply enable **NATACPI, TPACPI and TPSMAPI** all at once, TLP will dete
 - SDDM looks better than LightDM, so why wouldn't we use it instead? :) I'm going to be using [Catppuccin SDDM](https://github.com/catppuccin/sddm/releases).
 - **Needed Packages**: sudo pacman -S sddm qt6-svg qt6-declarative
 - **Disable LightDM and enable SDDM**: sudo systemctl disable lightdm.service && sudo systemctl enable sddm.service
-- **Add Catppuccin Theme**: Extract .zip file on your downloads directory and apply this command: **cd Downloads && sudo cp -r catppuccin-frappe /usr/share/sddm/themes/**
+- **Add Catppuccin Theme**: Extract .zip file on your downloads directory execute this command in terminal: **cd Downloads && sudo cp -r catppuccin-frappe /usr/share/sddm/themes/ #You can change catppuccin-frappe if you installed something else**
 ### Let's Edit SDDM
 - **Location**: sudo nano /etc/sddm.conf.d/
   - [Theme]
-  - Current=catppuccin-frappe (for example if you installed catppuccin-mocha, type catppuccin-mocha instead)
+  - Current=catppuccin-frappe #for example if you installed catppuccin-mocha, type catppuccin-mocha instead
 - And reboot your computer to apply changes.
 ## XFCE Ricing
-- After applying your preferred (or the ones I installed) desktop and icon themes, you might want to make rices. However, if you would like an already made panel preset, here is [mine](https://drive.google.com/file/d/1ef-N87La8UkVuTtwFG6oRucCx9G8ujA3/view?usp=sharing)
+- After applying your preferred (or the ones I installed) desktop and icon themes, you might want to make rices. However, if you would like an already made rice, here is [mine](https://drive.google.com/file/d/1ef-N87La8UkVuTtwFG6oRucCx9G8ujA3/view?usp=sharing)
 - If you preferred using my panel preset, you can apply it following these steps:
   - Settings Manager - Panel Profiles - Import - Preset File - Çıt - Apply
 ## Dolby Atmos Setup (EasyEffects) - [Reference](https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/)
