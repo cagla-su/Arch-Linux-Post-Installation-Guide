@@ -102,7 +102,7 @@ You can simply enable **NATACPI, TPACPI and TPSMAPI** all at once, TLP will dete
 ## Configure Fish (Optional)
 - If you would like your terminal to predict what you are going to type with colorful letters, you might want to use Fish for your terminal.
   - sudo pacman -S fish
-  - chsh -s /usr/bin/fish (you have to reboot after this command for next commands to work)
+  - chsh -s /usr/bin/fish #**you have to reboot after this command for next commands to work**
     - function fish_greeting
     - fastfetch
     - end
