@@ -1,5 +1,5 @@
 # Çıt's Arch Linux Post-Installation Guide - Thinkpad T490
-Hello. I wrote this guide for **Thinkpad T490 and XFCE specifically**, however you can still follow **almost** all the steps if you don't have the same computer as I have. So, let's begin!
+Hello! I wrote this guide for **Thinkpad T490 and XFCE specifically**, however you can still follow **almost** all the steps if you don't have the same computer as I have. So, let's begin!
 
 ## Install AUR Helper
 Normally, everyone prefers **yay** but I prefer **paru** since it is written in **rust**.
@@ -10,7 +10,7 @@ CachyOS is a **performance focused Arch-based** Linux distribution. If you would
 ### Install
 wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -S linux-cachyos-bore
 ## GRUB Configuration
-- GRUB_CMDLINE_LINUX_DEFAULT="mitigations=off" (do not remove the already existing parameters, just add mitigations=off next to them)
+- GRUB_CMDLINE_LINUX_DEFAULT="mitigations=off" #**do not remove the already existing parameters, just add mitigations=off next to them**
 - GRUB_DEFAULT=saved
 - GRUB_SAVEDEFAULT=true
 - GRUB_DISABLE_SUBMENU=y
