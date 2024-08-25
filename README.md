@@ -16,7 +16,7 @@ Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [par
 - *GRUB_DISABLE_SUBMENU=y*
 ### Information About GRUB Configuration
 - **You have to execute this command in terminal to apply changes**: *sudo grub-mkconfig -o /boot/grub/grub.cfg*
-- CPU mitigations reduce performance by 30% on these CPUs:
+- **CPU mitigations reduce performance by 30% on these CPUs:**
   - **AMD**: Zen 1, Zen 1+, Zen 2
   - **Intel**: 6th, 7th and 8th Generation
   - This is why you might want to disable mitigations via **mitigations=off** kernel parameter especially if you're gaming. However, disabled mitigations might **introduce security risks**. If you care about **security** more than **performance**, do **not** disable mitigations.
