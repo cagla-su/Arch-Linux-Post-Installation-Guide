@@ -129,7 +129,7 @@ You can simply enable **NATACPI, TPACPI and TPSMAPI** all at once, TLP will dete
 ### Add Catppuccin Theme
 **Extract .zip file on your downloads directory execute this command in terminal**: *cd Downloads && sudo cp -r catppuccin-frappe /usr/share/sddm/themes/* (**You can change catppuccin-frappe if you installed something else**)
 ### Let's Edit SDDM
-- **Location**: *sudo nano /etc/sddm.conf.d/*
+- **Location**: *sudo nano /etc/sddm.conf.d/sddm.conf*
   - [Theme]
   - *Current=catppuccin-frappe* (**for example if you installed catppuccin-mocha, type catppuccin-mocha instead**)
 - And reboot your computer to apply changes.
