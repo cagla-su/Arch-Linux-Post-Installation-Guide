@@ -106,7 +106,7 @@ You can simply enable `NATACPI, TPACPI` and `TPSMAPI` all at once, TLP will dete
 - **Location**: `sudo nano /etc/systemd/zram-generator.conf`
 ```
 [zram0]
-*zram-size = 8192*
+zram-size = 8192
 ```
 - `sudo systemctl restart systemd-zram-setup@zram0.service`
 ## Configure Fish && Fastfetch (Optional)
