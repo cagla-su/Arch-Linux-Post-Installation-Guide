@@ -57,7 +57,7 @@ EndSection
 `sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop prismlauncher jre8-openjdk jre17-openjdk jre21-openjdk`
 ## Install Other Packages
 - For a more stable experience, I try to use Flatpak packages as much as possible, at least for basic apps.
-`flatpak install flathub org.onlyoffice.desktopeditors org.kde.okular net.cozic.joplin_desktop com.obsproject.Studio org.kde.kdenlive fr.handbrake.ghb org.gimp.GIMP org.inkscape.Inkscape us.zoom.Zoom com.spotify.Client org.nomacs.ImageLounge`
+- `flatpak install flathub org.onlyoffice.desktopeditors org.kde.okular net.cozic.joplin_desktop com.obsproject.Studio org.kde.kdenlive fr.handbrake.ghb org.gimp.GIMP org.inkscape.Inkscape us.zoom.Zoom com.spotify.Client org.nomacs.ImageLounge`
 ## TLP Configuration - Power Management For Laptops
 - You can use [TLP-UI](https://aur.archlinux.org/packages/tlpui) to configure [TLP](https://linrunner.de/tlp/index.html) via a graphical interface but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is safer to apply them manually. Also, again, **do not use TLP if you don't need battery life, because we are using TLP for the best battery life on battery mode and to switch between performance/power saving modes for our laptop, using [power-profiles-daemon](https://github.com/Rongronggg9/power-profiles-daemon) is easier and needs no configuration at all!!!**
 - **Location**: `sudo nano /etc/tlp.conf` (**make sure unchecking each option**)
