@@ -122,3 +122,5 @@ zram-size = 8192
 - Next, in EasyEffects, open `Effects` page and click on `Add Effect`. Then, add a `Convolver` and click on convolver.
 - Click on `Impulses` and then `Import Impulse`, now add all of the .irs files you downloaded.
 - Last, on `Impulses` page, it will be enough to load one of the presets (you can switch between presets).
+## Conclusion
+So, this was my Arch Linux post installation guide, I hope it is useful for you! Have a nice day ❤️
