@@ -1,4 +1,4 @@
-# Çıt's Arch Linux Post-Installation Guide - Thinkpad T490
+# Cutie Penguins' Arch Linux Post-Installation Guide - Thinkpad T490
 Hello! I wrote this guide for **[Thinkpad T490](https://psref.lenovo.com/syspool/Sys/PDF/ThinkPad/ThinkPad_T490/ThinkPad_T490_Spec.PDF) specifically**, however you can still follow **almost** all the steps if you don't have the same computer as I have. So, let's begin!
 
 ## Install AUR Helper
