@@ -131,7 +131,9 @@ sudo nano /etc/systemd/zram-generator.conf
 [zram0]
 zram-size = 8192
 ```
-- `sudo systemctl restart systemd-zram-setup@zram0.service`
+```
+sudo systemctl restart systemd-zram-setup@zram0.service
+```
 ## Configure Fish && Fastfetch (Optional)
 - If you would like your terminal to predict what you are going to type with colorful letters, you might want to use [Fish](https://fishshell.com/) for your terminal.
 ```
