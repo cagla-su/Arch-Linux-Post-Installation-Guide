@@ -10,7 +10,9 @@ sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/pa
 ## Install CachyOS Repositories and CachyOS Kernel (Optional)
 [CachyOS](https://cachyos.org/) is a **performance focused Arch-based** Linux distribution. If you would like an **out of the box experience** (it can be considered out of the box compared to Arch) and need the best performance possible, I would simply install CachyOS. However, I just want to use their [greatly optimized repositories and kernel](https://github.com/CachyOS/linux-cachyos#cachyos-repositories) while configuring every other thing about my system on my own. **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high load such as gaming and switch to default **Linux** or **Linux-LTS** kernel when you need more battery life.
 ### Install
-```wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos```
+```
+wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos-bore
+```
 ## GRUB Configuration
 **Location of GRUB**: 
 ```
@@ -77,10 +79,11 @@ flatpak install flathub org.onlyoffice.desktopeditors org.kde.okular net.cozic.j
 ```
 ## TLP Configuration - Power Management For Laptops
 - You can use [TLP-UI](https://aur.archlinux.org/packages/tlpui) to configure [TLP](https://linrunner.de/tlp/index.html) via a graphical interface but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is safer to apply them manually. Also, again, **do not use TLP if you don't need battery life, because we are using TLP for the best battery life on battery mode and to switch between performance/power saving modes for our laptop, using [power-profiles-daemon](https://github.com/Rongronggg9/power-profiles-daemon) is easier and needs no configuration at all!!!**
-- **Location (make sure unchecking each option you'd like to use)**:
+- **Location**:
 ```
 sudo nano /etc/tlp.conf
 ```
+**Make sure unchecking each option you'd like to use**
 ```
 TLP_ENABLE=1
 TLP_DEFAULT_MODE=BAT
