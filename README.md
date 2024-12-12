@@ -34,30 +34,6 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
   - **Intel**: `6th, 7th and 8th Generation`
   - This is why you might want to disable mitigations via `mitigations=off` kernel parameter especially if you're gaming. However, disabled mitigations might **introduce security risks**. If you care about **security** more than **performance**, do **not** disable mitigations.
 - If you will be using **only one kernel** that you installed while installing Arch, you don't have to change the stats of `GRUB_DEFAULT, GRUB_SAVEDEFAULT` and `GRUB_DISABLE_SUBMENU` because we are changing their stats to be able to switch between kernels easily.
-## Intel iGPU Configuration For [X11/Xorg](https://www.x.org/wiki/) (If you're using [Wayland](https://wayland.freedesktop.org/), you can skip this step)
-- Some projects such as [Debian](https://www.phoronix.com/news/Ubuntu-Debian-Abandon-Intel-DDX), [Fedora](https://www.phoronix.com/news/Fedora-Xorg-Intel-DDX-Switch), [KDE](https://community.kde.org/Plasma/5.9_Errata#Intel_GPUs) and [Mozilla](https://bugzilla.mozilla.org/show_bug.cgi?id=1710400) suggest **modesetting** driver instead of using [xf86-video-intel](https://archlinux.org/packages/?name=xf86-video-intel) with **intel** driver since intel driver is known to have problems such as freezing the system and granting poor performance.
-- **Location of Intel Configuration File**:
-```
-sudo nano /etc/X11/xorg.conf.d/20-intel.conf
-```
-```
-Section "Device"
-Identifier "Intel Graphics"
-Driver "modesetting"
-Option "Backlight" "intel_backlight"
-Option "AccelMethod" "glamor"
-Option "TearFree" "false"
-Option "RenderAccel" "true"
-Option "SwapbuffersWait" "false"
-Option "DRI" "2"
-Option "FramebufferCompression" "false"
-Option "TripleBuffer" "false"
-Option "Shadow" "false"
-Option "LinearFramebuffer" "true"
-Option "RelaxedFencing" "false"
-Option "BufferCache" "true"
-EndSection
-```
 ## Install Necessary Packages
 ```
 sudo pacman -S unrar unzip intel-ucode ufw tlp flatpak fwupd fastfetch gnome-disk-utility vlc noto-fonts-cjk noto-fonts-emoji capitaine-cursors && sudo systemctl enable --now tlp.service && sudo systemctl enable --now ufw.service
@@ -89,13 +65,13 @@ TLP_ENABLE=1
 TLP_DEFAULT_MODE=BAT
 CPU_DRIVER_OPMODE_ON_AC=active
 CPU_DRIVER_OPMODE_ON_BAT=active
-CPU_SCALING_GOVERNOR_ON_AC=performance
+CPU_SCALING_GOVERNOR_ON_AC=powersave
 CPU_SCALING_GOVERNOR_ON_BAT=powersave
-CPU_ENERGY_PERF_POLICY_ON_AC=performance
+CPU_ENERGY_PERF_POLICY_ON_AC=balance_power
 CPU_ENERGY_PERF_POLICY_ON_BAT=power
-CPU_MIN_PERF_ON_AC=100
+CPU_MIN_PERF_ON_AC=0
 CPU_MAX_PERF_ON_AC=100
-CPU_MIN_PERF_ON_BAT=5
+CPU_MIN_PERF_ON_BAT=0
 CPU_MAX_PERF_ON_BAT=30
 CPU_BOOST_ON_AC=1 (DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST)
 CPU_BOOST_ON_BAT=0 (DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST)
