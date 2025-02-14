@@ -8,27 +8,28 @@ Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [par
 sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
 ```
 ## Install CachyOS Repositories and CachyOS Kernel (Optional)
-[CachyOS](https://cachyos.org/) is a **performance focused Arch-based** Linux distribution. If you would like an **out of the box experience** (it can be considered out of the box compared to Arch) and need the best performance possible, I would simply install CachyOS. However, I just want to use their [greatly optimized repositories and kernel](https://github.com/CachyOS/linux-cachyos#cachyos-repositories) while configuring every other thing about my system on my own. **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high load such as gaming and switch to default **Linux** or **Linux-LTS** kernel when you need more battery life.
+[CachyOS](https://cachyos.org/) is a **performance focused Arch-based** Linux distribution. If you would like an **out of the box experience** (it can be considered out of the box compared to Arch) and need the best performance possible, I would simply install CachyOS. However, I just want to use their [greatly optimized repositories and kernel](https://github.com/CachyOS/linux-cachyos#cachyos-repositories) while configuring every other thing about my system on my own. **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high loads such as gaming and switch to default **Linux** or **Linux-LTS** kernel when you need more battery life.
 ### Install
 ```
 wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos-bore
 ```
 ## GRUB Configuration
-**Location of GRUB**: 
+- **Command to configure GRUB**: 
 ```
 sudo nano /etc/default/grub
 ```
+- **Options to edit in GRUB** - *Don't forget to do unchecking (remove the # signs of the options)* 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="mitigations=off"
+GRUB_CMDLINE_LINUX_DEFAULT="mitigations=off" #don't remove existing parameters, just add the new parameter you see at last.
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 GRUB_DISABLE_SUBMENU=y
 ```
-### Information About GRUB Configuration
-- **You have to execute this command in terminal to apply changes**:
+- **Command to apply changes**:
 ```
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
+### Things You Should Know
 - **CPU mitigations reduce performance by 30% on these CPUs:**
   - **AMD**: `Zen 1, Zen 1+, Zen 2`
   - **Intel**: `6th, 7th and 8th Generation`
@@ -36,12 +37,12 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 - If you will be using **only one kernel** that you installed while installing Arch, you don't have to change the stats of `GRUB_DEFAULT, GRUB_SAVEDEFAULT` and `GRUB_DISABLE_SUBMENU` because we are changing their stats to be able to switch between kernels easily.
 ## Install Necessary Packages
 ```
-sudo pacman -S unrar unzip intel-ucode ufw tlp flatpak fwupd fastfetch gnome-disk-utility vlc noto-fonts-cjk noto-fonts-emoji capitaine-cursors && sudo systemctl enable --now tlp.service && sudo systemctl enable --now ufw.service
+sudo pacman -S unrar unzip intel-ucode ufw tlp flatpak fwupd fastfetch gnome-disk-utility vlc noto-fonts-cjk noto-fonts-emoji capitaine-cursors spectacle && sudo systemctl enable --now tlp.service && sudo systemctl enable --now ufw.service
 ```
 - You **don't** have to install these packages:
   - **intel-ucode**: if you don't have an Intel CPU
   - **ufw**: if you don't want to enable firewall
-  - **tlp**: if you don't want to have better battery life. Use **power-profiles-daemon** if you only want to have high performance
+  - **tlp**: if you don't want to have better battery life
   - **flatpak**: if you will install everything using **AUR**
   - **fwupd**: if your computer is not supported by fwupd for firmware updates
 ## Install Gaming Packages
@@ -63,39 +64,29 @@ sudo nano /etc/tlp.conf
 ```
 TLP_ENABLE=1
 TLP_DEFAULT_MODE=BAT
-CPU_DRIVER_OPMODE_ON_AC=active
 CPU_DRIVER_OPMODE_ON_BAT=active
-CPU_SCALING_GOVERNOR_ON_AC=powersave
 CPU_SCALING_GOVERNOR_ON_BAT=powersave
-CPU_ENERGY_PERF_POLICY_ON_AC=balance_power
 CPU_ENERGY_PERF_POLICY_ON_BAT=power
-CPU_MIN_PERF_ON_AC=0
+CPU_MIN_PERF_ON_AC=100
 CPU_MAX_PERF_ON_AC=100
 CPU_MIN_PERF_ON_BAT=0
 CPU_MAX_PERF_ON_BAT=30
-CPU_BOOST_ON_AC=1 (DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST)
-CPU_BOOST_ON_BAT=0 (DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT BOOST)
-CPU_HWP_DYN_BOOST_ON_AC=1 (DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT DYNAMIC BOOST)
-CPU_HWP_DYN_BOOST_ON_BAT=0 (DON'T USE THIS OPTION IF YOUR CPU DOES NOT SUPPORT DYNAMIC BOOST)
+CPU_BOOST_ON_AC=1 #ignore this option if your CPU doesn't support boost
+CPU_BOOST_ON_BAT=0 #ignore this option if your CPU doesn't support boost
+CPU_HWP_DYN_BOOST_ON_AC=1 #ignore this option if your CPU doesn't support dynamic boost
+CPU_HWP_DYN_BOOST_ON_BAT=0 #ignore this option if your CPU doesn't support dynamic boost
 NMI_WATCHDOG=0
-PLATFORM_PROFILE_ON_AC=balanced
 PLATFORM_PROFILE_ON_BAT=low-power
-AHCI_RUNTIME_PM_ON_AC=on
 AHCI_RUNTIME_PM_ON_BAT=auto
-INTEL_GPU_MIN_FREQ_ON_BAT=300 (THIS OPTION IS FOR MY iGPU, DON'T USE THIS IF YOU DON'T HAVE INTEL UHD 620)
-INTEL_GPU_MAX_FREQ_ON_BAT=300 (THIS OPTION IS FOR MY iGPU, DON'T USE THIS IF YOU DON'T HAVE INTEL UHD 620)
-INTEL_GPU_BOOST_FREQ_ON_BAT=300 (THIS OPTION IS FOR MY iGPU, DON'T USE THIS IF YOU DON'T HAVE INTEL UHD 620)
 WIFI_PWR_ON_AC=off
 WIFI_PWR_ON_BAT=on
 WOL_DISABLE=Y
 SOUND_POWER_SAVE_ON_AC=0
 SOUND_POWER_SAVE_ON_BAT=1
-PCIE_ASPM_ON_AC=powersave
 PCIE_ASPM_ON_BAT=powersupersave
-RUNTIME_PM_ON_AC=on
 RUNTIME_PM_ON_BAT=auto
-START_CHARGE_THRESH_BAT0=75 (USE THIS OPTION ONLY IF YOUR LAPTOP SUPPORTS BATTERY THRESHOLDS AND IF YOU WANT TO USE THIS FEATURE)
-STOP_CHARGE_THRESH_BAT0=80 (USE THIS OPTION ONLY IF YOUR LAPTOP SUPPORTS BATTERY THRESHOLDS AND IF YOU WANT TO USE THIS FEATURE)
+START_CHARGE_THRESH_BAT0=75 #ignore this option if your laptop doesn't support battery thresholds
+STOP_CHARGE_THRESH_BAT0=80 #ignore this option if your laptop doesn't support battery thresholds
 ```
 ## ZRAM Size Increase (Optional) 
 - For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
