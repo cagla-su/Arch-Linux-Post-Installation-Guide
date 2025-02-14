@@ -8,7 +8,9 @@ Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [par
 sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
 ```
 ## Install CachyOS Repositories and CachyOS Kernel (Optional)
-[CachyOS](https://cachyos.org/) is a **performance focused Arch-based** Linux distribution. If you would like an **out of the box experience** (it can be considered out of the box compared to Arch) and need the best performance possible, I would simply install CachyOS. However, I just want to use their [greatly optimized repositories and kernel](https://github.com/CachyOS/linux-cachyos#cachyos-repositories) while configuring every other thing about my system on my own. **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high loads such as gaming and switch to default **Linux** or **Linux-LTS** kernel when you need more battery life.
+- [CachyOS](https://cachyos.org/) is a **performance focused Arch-based** Linux distribution. If you would like an **out of the box experience** (it can be considered out of the box compared to Arch) and need the best performance possible, I would simply install CachyOS.
+- However, I just want to use their [greatly optimized repositories and kernel](https://github.com/CachyOS/linux-cachyos#cachyos-repositories) while configuring every other thing about my system on my own.
+  - **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high loads such as gaming and switch to default **Linux** or **Linux-LTS** kernel when you need more battery life.
 ### Install
 ```
 wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos-bore
@@ -18,9 +20,9 @@ wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.
 ```
 sudo nano /etc/default/grub
 ```
-- **Options to edit in GRUB** - *Don't forget to do unchecking (remove the # signs of the options)* 
+- **Options to edit in GRUB** - *Don't forget to uncheck each option* 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="mitigations=off" #don't remove existing parameters, just add the new parameter you see at last.
+GRUB_CMDLINE_LINUX_DEFAULT="mitigations=off" # do not remove existing parameters, just add the new parameter at last.
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 GRUB_DISABLE_SUBMENU=y
@@ -56,11 +58,11 @@ flatpak install flathub org.onlyoffice.desktopeditors org.kde.okular net.cozic.j
 ```
 ## TLP Configuration - Power Management For Laptops
 - You can use [TLP-UI](https://aur.archlinux.org/packages/tlpui) to configure [TLP](https://linrunner.de/tlp/index.html) via a graphical interface but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is safer to apply them manually. Also, again, **do not use TLP if you don't need battery life, because we are using TLP for the best battery life on battery mode and to switch between performance/power saving modes for our laptop, using [power-profiles-daemon](https://github.com/Rongronggg9/power-profiles-daemon) is easier and needs no configuration at all!!!**
-- **Location**:
+- **Command to configure TLP**:
 ```
 sudo nano /etc/tlp.conf
 ```
-**Make sure unchecking each option you'd like to use**
+**Make sure to uncheck each option you'd like to use**
 ```
 TLP_ENABLE=1
 TLP_DEFAULT_MODE=BAT
@@ -71,10 +73,10 @@ CPU_MIN_PERF_ON_AC=100
 CPU_MAX_PERF_ON_AC=100
 CPU_MIN_PERF_ON_BAT=0
 CPU_MAX_PERF_ON_BAT=30
-CPU_BOOST_ON_AC=1 #ignore this option if your CPU doesn't support boost
-CPU_BOOST_ON_BAT=0 #ignore this option if your CPU doesn't support boost
-CPU_HWP_DYN_BOOST_ON_AC=1 #ignore this option if your CPU doesn't support dynamic boost
-CPU_HWP_DYN_BOOST_ON_BAT=0 #ignore this option if your CPU doesn't support dynamic boost
+CPU_BOOST_ON_AC=1 # ignore this option if your CPU doesn't support boost
+CPU_BOOST_ON_BAT=0 # ignore this option if your CPU doesn't support boost
+CPU_HWP_DYN_BOOST_ON_AC=1 # ignore this option if your CPU doesn't support dynamic boost
+CPU_HWP_DYN_BOOST_ON_BAT=0 # ignore this option if your CPU doesn't support dynamic boost
 NMI_WATCHDOG=0
 PLATFORM_PROFILE_ON_BAT=low-power
 AHCI_RUNTIME_PM_ON_BAT=auto
@@ -85,8 +87,8 @@ SOUND_POWER_SAVE_ON_AC=0
 SOUND_POWER_SAVE_ON_BAT=1
 PCIE_ASPM_ON_BAT=powersupersave
 RUNTIME_PM_ON_BAT=auto
-START_CHARGE_THRESH_BAT0=75 #ignore this option if your laptop doesn't support battery thresholds
-STOP_CHARGE_THRESH_BAT0=80 #ignore this option if your laptop doesn't support battery thresholds
+START_CHARGE_THRESH_BAT0=75 # ignore this option if your laptop doesn't support battery thresholds
+STOP_CHARGE_THRESH_BAT0=80 # ignore this option if your laptop doesn't support battery thresholds
 ```
 ## ZRAM Size Increase (Optional) 
 - For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
@@ -107,9 +109,9 @@ sudo systemctl restart systemd-zram-setup@zram0.service
 sudo pacman -S fish
 ```
 ```
-chsh -s /usr/bin/fish
+chsh -s /usr/bin/fish # you should log out/reboot after running the command
 ```
-(**you have to reboot after this command for next commands to work**)
+- If you would like to see **fastfetch** every time you launch terminal, you should run the commands below:
 ```
   function fish_greeting
   fastfetch
