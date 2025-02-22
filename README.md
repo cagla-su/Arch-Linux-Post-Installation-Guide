@@ -120,11 +120,11 @@ chsh -s /usr/bin/fish # you should log out/reboot after running the command
 ```
 funcsave fish_greeting
 ```
-## Dolby Atmos Setup (EasyEffects) - [Reference](https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/)
-- After launching [EasyEffects](https://github.com/wwmm/easyeffects) and setting it to launch at boot from app settings, download [this .zip file](https://www.mediafire.com/file/qt9znutry7fgzk7/dolby.zip/file) for [Dolby Atmos](https://www.dolby.com/technologies/dolby-atmos/) presets.
-- After downloading and extracting the .zip file, move the folder to a location you will remember the path of.
+## Dolby Atmos Setup (EasyEffects)
+- After launching [EasyEffects](https://github.com/wwmm/easyeffects) and setting it to launch at boot from app settings, download [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for [Dolby Atmos](https://www.dolby.com/technologies/dolby-atmos/)-like profiles.
+- After downloading the files, move the files to a location you will remember the path of.
 - Next, in EasyEffects, open `Effects` page and click on `Add Effect`. Then, add a `Convolver` and click on convolver.
 - Click on `Impulses` and then `Import Impulse`, now add all of the .irs files you downloaded.
-- Last, on `Impulses` page, it will be enough to load one of the presets (you can switch between presets).
+- Last, on `Impulses` page, it will be enough to load one of the presets (you can switch among presets).
 ## Conclusion
 So, this was my Arch Linux post installation guide, I hope it is useful for you! Have a nice day ❤️
