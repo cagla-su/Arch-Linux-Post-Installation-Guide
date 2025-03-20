@@ -1,6 +1,5 @@
-# Cutie Penguins' Arch Linux Post-Installation Guide - Thinkpad T490
-Hello! I wrote this guide for **[Thinkpad T490](https://psref.lenovo.com/syspool/Sys/PDF/ThinkPad/ThinkPad_T490/ThinkPad_T490_Spec.PDF) specifically**, however you can still follow **almost** all the steps if you don't have the same computer as I have. So, let's begin!
-
+# Cutie Penguins' Arch Linux Post-Installation Guide
+Hello 🤭. In this guide, you will be informed about the Arch Linux post-installation steps. So, let's begin!
 ## Install AUR Helper
 Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [paru](https://github.com/Morganamilo/paru) since it is written in [rust](https://www.rust-lang.org/).
 ### Install Paru AUR Helper
@@ -13,7 +12,7 @@ sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/pa
   - **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high loads such as gaming and switch to default **Linux** or **Linux-LTS** kernel when you need more battery life.
 ### Install
 ```
-wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos-bore
+wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos
 ```
 ## GRUB Configuration
 - **Command to configure GRUB**: 
@@ -39,7 +38,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 - If you will be using **only one kernel** that you installed while installing Arch, you don't have to change the stats of `GRUB_DEFAULT, GRUB_SAVEDEFAULT` and `GRUB_DISABLE_SUBMENU` because we are changing their stats to be able to switch between kernels easily.
 ## Install Necessary Packages
 ```
-sudo pacman -S unrar unzip intel-ucode ufw tlp flatpak fwupd fastfetch gnome-disk-utility vlc noto-fonts-cjk noto-fonts-emoji capitaine-cursors spectacle && sudo systemctl enable --now tlp.service && sudo systemctl enable --now ufw.service
+sudo pacman -S unrar unzip intel-ucode ufw tlp flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji spectacle gwenview && sudo systemctl enable --now tlp.service && sudo systemctl enable --now ufw.service
 ```
 - You **don't** have to install these packages:
   - **intel-ucode**: if you don't have an Intel CPU
@@ -49,16 +48,17 @@ sudo pacman -S unrar unzip intel-ucode ufw tlp flatpak fwupd fastfetch gnome-dis
   - **fwupd**: if your computer is not supported by fwupd for firmware updates
 ## Install Gaming Packages
 ```
-sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt vesktop
+sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt
 ```
 ## Install Other Packages
-For a more stable experience, I try to use Flatpak packages as much as possible, at least for basic apps.
+For a more stable experience, I try to use Flatpak packages as much as possible, at least for basic apps. However, Flatpaks take up lots of space from your storage because Flatpak packages are containerized. If you care about your storage limit, use native packages for the apps you want to install instead of Flatpak.
 ```
-flatpak install flathub org.onlyoffice.desktopeditors org.kde.okular net.cozic.joplin_desktop com.obsproject.Studio org.kde.kdenlive fr.handbrake.ghb org.gimp.GIMP org.inkscape.Inkscape us.zoom.Zoom com.spotify.Client org.nomacs.ImageLounge
+flatpak install flathub org.onlyoffice.desktopeditors org.kde.okular net.cozic.joplin_desktop com.obsproject.Studio org.gimp.GIMP org.inkscape.Inkscape us.zoom.Zoom com.spotify.Client
 ```
 ## TLP Configuration - Power Management For Laptops
-- You can use [TLP-UI](https://aur.archlinux.org/packages/tlpui) to configure [TLP](https://linrunner.de/tlp/index.html) via a graphical interface but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is safer to apply them manually. Also, again, **do not use TLP if you don't need battery life, because we are using TLP for the best battery life on battery mode and to switch between performance/power saving modes for our laptop, using [power-profiles-daemon](https://github.com/Rongronggg9/power-profiles-daemon) is easier and needs no configuration at all!!!**
-- **Command to configure TLP**:
+- You can use [TLP-UI](https://aur.archlinux.org/packages/tlpui) to configure [TLP](https://linrunner.de/tlp/index.html) via a graphical interface but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is safer to apply them manually.
+- **Do not use TLP if you don't need battery life, because we are using TLP for the best battery life on battery mode and to switch between performance/power saving modes for our laptop, using [power-profiles-daemon](https://github.com/Rongronggg9/power-profiles-daemon) is easier and needs no configuration at all!!!**
+- **Command to start editing TLP configuration file**:
 ```
 sudo nano /etc/tlp.conf
 ```
