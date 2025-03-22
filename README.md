@@ -1,5 +1,5 @@
 # Cutie Penguins' Arch Linux Post-Installation Guide
-Hello 🤭. In this guide, you will be informed about the Arch Linux post-installation steps. So, let's begin!
+Hello 🤭. In this guide, you will be informed about how do I prepare my Arch system after installation. So, let's begin!
 ## Install AUR Helper
 Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [paru](https://github.com/Morganamilo/paru) since it is written in [rust](https://www.rust-lang.org/).
 ### Install Paru AUR Helper
@@ -15,11 +15,11 @@ sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/pa
 wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos
 ```
 ## systemd-boot Configuration
-**Command to Configure systemd-boot**
+**Command to configure systemd-boot**
 ```
 sudo nano /boot/loader/loader.conf
 ```
-**How Should Your loader.conf File Look Like**
+**How should your loader.conf file look like**
 ```
 default @saved
 timeout 5
@@ -27,8 +27,10 @@ timeout 5
 auto-entries 0
 ```
 ## Configure Intel GPU For Better Performance - Intel & X11 ONLY! - Optional
-**Command to Configure Your Intel GPU**
-`sudo nano /etc/X11/xorg.conf.d/20-intel.conf`
+**Command to configure your Intel GPU**
+```
+sudo nano /etc/X11/xorg.conf.d/20-intel.conf
+```
 ```
 Section "Device"
   Identifier "Intel Graphics"
@@ -51,14 +53,13 @@ EndSection
 ```
 ## Install Necessary Packages
 ```
-sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji capitaine-cursors papirus-icon-theme picom && paru -S flat-remix-gtk spotify zoom  && sudo systemctl enable --now ufw.service
+sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji  && sudo systemctl enable --now ufw.service
 ```
-- You **don't** have to install these packages:
-  - **intel-ucode**: if you don't have an Intel CPU. You can install **amd-ucode** if you have an AMD CPU.
-  - **ufw**: if you don't want to use a firewall
-  - **auto-cpufreq**: if you want to use a different power management tool
-  - **flatpak**: if you will install everything using **AUR**
-  - **fwupd**: if your computer is not supported by fwupd for firmware updates
+You can install **amd-ucode** instead of **intel-ucode** if you have an AMD CPU.
+## Install Optional Packages
+```
+sudo pacman -S capitaine-cursors papirus-icon-theme picom && paru -S flat-remix-gtk mugshot spotify zoom
+```
 ## Install Gaming Packages
 ```
 sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt discord
@@ -66,11 +67,15 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt discord
 ## Enable auto-cpufreq
 - auto-cpufreq is an automatic CPU speed & power optimizer. It is generally good for laptops but you can use it if you have a PC as well. It does everything for you.
 **Command to enable auto-cpufreq**
-`sudo auto-cpufreq --install`
+```
+sudo auto-cpufreq --install
+```
 After the command, you don't have to do anything further but if you would like to configure it a bit more, continue reading the step.
 ### auto-cpufreq Configuration 
 **Command to configure auto-cpufreq**:
-`sudo nano /etc/auto-cpufreq.conf`
+```
+sudo nano /etc/auto-cpufreq.conf
+```
 ```
 [charger]
 governor = performance
@@ -93,9 +98,9 @@ enable_thresholds = true # do not include this option in your file if you don't 
 start_threshold = 75 # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
 stop_threshold = 80 # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
 ```
-## ZRAM Size Increase (Optional) 
+## ZRAM Size Increase - Optional 
 - For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
-- **Location**:
+- **Command to configure ZRAM**
 ```
 sudo nano /etc/systemd/zram-generator.conf
 ```
@@ -106,7 +111,17 @@ zram-size = 8192
 ```
 sudo systemctl restart systemd-zram-setup@zram0.service
 ```
-## Configure Fish && Fastfetch (Optional)
+## Configure picom - X11 ONLY! - Optional
+**Command to configure picom**
+```
+sudo nano ~/.config/picom.conf
+```
+```
+vsync = true;
+backend = "glx";
+fading = true;
+```
+## Configure Fish & Fastfetch - Optional
 - If you would like your terminal to predict what you are going to type with colorful letters, you might want to use [Fish](https://fishshell.com/) for your terminal.
 ```
 sudo pacman -S fish
