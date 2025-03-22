@@ -14,81 +14,84 @@ sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/pa
 ```
 wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos
 ```
-## GRUB Configuration
-- **Command to configure GRUB**: 
+## systemd-boot Configuration
+**Command to Configure systemd-boot**
 ```
-sudo nano /etc/default/grub
+sudo nano /boot/loader/loader.conf
 ```
-- **Options to edit in GRUB** - *Don't forget to uncheck each option* 
+**How Should Your loader.conf File Look Like**
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="mitigations=off" # do not remove existing parameters, just add the new parameter at last.
-GRUB_DEFAULT=saved
-GRUB_SAVEDEFAULT=true
-GRUB_DISABLE_SUBMENU=y
+default @saved
+timeout 5
+#console-mode keep
+auto-entries 0
 ```
-- **Command to apply changes**:
+## Configure Intel GPU For Better Performance - Intel & X11 ONLY! - Optional
+**Command to Configure Your Intel GPU**
+`sudo nano /etc/X11/xorg.conf.d/20-intel.conf`
 ```
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+Section "Device"
+  Identifier "Intel Graphics"
+  Driver "modesetting"
+  Option "Backlight" "intel_backlight"
+  Option "AccelMethod" "glamor"
+  Option "TearFree" "false"
+  Option "RenderAccel" "true"
+  Option "SwapbuffersWait" "false"
+  Option "DRI" "2"
+  Option "Throttle" "false"
+  Option "FramebufferCompression" "false"
+  VideoRam 24576
+  Option "TripleBuffer" "false"
+  Option "Shadow" "false"
+  Option "LinearFramebuffer" "true"
+  Option "RelaxedFencing" "false"
+  Option "BufferCache" "true"
+EndSection
 ```
-### Things You Should Know
-- **CPU mitigations reduce performance by 30% on these CPUs:**
-  - **AMD**: `Zen 1, Zen 1+, Zen 2`
-  - **Intel**: `6th, 7th and 8th Generation`
-  - This is why you might want to disable mitigations via `mitigations=off` kernel parameter especially if you're gaming. However, disabled mitigations might **introduce security risks**. If you care about **security** more than **performance**, do **not** disable mitigations.
-- If you will be using **only one kernel** that you installed while installing Arch, you don't have to change the stats of `GRUB_DEFAULT, GRUB_SAVEDEFAULT` and `GRUB_DISABLE_SUBMENU` because we are changing their stats to be able to switch between kernels easily.
 ## Install Necessary Packages
 ```
-sudo pacman -S unrar unzip intel-ucode ufw tlp flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji spectacle gwenview && sudo systemctl enable --now tlp.service && sudo systemctl enable --now ufw.service
+sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji capitaine-cursors papirus-icon-theme picom && paru -S flat-remix-gtk spotify zoom  && sudo systemctl enable --now ufw.service
 ```
 - You **don't** have to install these packages:
-  - **intel-ucode**: if you don't have an Intel CPU
-  - **ufw**: if you don't want to enable firewall
-  - **tlp**: if you don't want to have better battery life
+  - **intel-ucode**: if you don't have an Intel CPU. You can install **amd-ucode** if you have an AMD CPU.
+  - **ufw**: if you don't want to use a firewall
+  - **auto-cpufreq**: if you want to use a different power management tool
   - **flatpak**: if you will install everything using **AUR**
   - **fwupd**: if your computer is not supported by fwupd for firmware updates
 ## Install Gaming Packages
 ```
-sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt
+sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt discord
 ```
-## Install Other Packages
-For a more stable experience, I try to use Flatpak packages as much as possible, at least for basic apps. However, Flatpaks take up lots of space from your storage because Flatpak packages are containerized. If you care about your storage limit, use native packages for the apps you want to install instead of Flatpak.
+## Enable auto-cpufreq
+- auto-cpufreq is an automatic CPU speed & power optimizer. It is generally good for laptops but you can use it if you have a PC as well. It does everything for you.
+**Command to enable auto-cpufreq**
+`sudo auto-cpufreq --install`
+After the command, you don't have to do anything further but if you would like to configure it a bit more, continue reading the step.
+### auto-cpufreq Configuration 
+**Command to configure auto-cpufreq**:
+`sudo nano /etc/auto-cpufreq.conf`
 ```
-flatpak install flathub org.onlyoffice.desktopeditors org.kde.okular net.cozic.joplin_desktop com.obsproject.Studio org.gimp.GIMP org.inkscape.Inkscape us.zoom.Zoom com.spotify.Client
-```
-## TLP Configuration - Power Management For Laptops
-- You can use [TLP-UI](https://aur.archlinux.org/packages/tlpui) to configure [TLP](https://linrunner.de/tlp/index.html) via a graphical interface but I noticed it doesn't uncheck some options which prevents them from functioning, that's why it is safer to apply them manually.
-- **Do not use TLP if you don't need battery life, because we are using TLP for the best battery life on battery mode and to switch between performance/power saving modes for our laptop, using [power-profiles-daemon](https://github.com/Rongronggg9/power-profiles-daemon) is easier and needs no configuration at all!!!**
-- **Command to start editing TLP configuration file**:
-```
-sudo nano /etc/tlp.conf
-```
-**Make sure to uncheck each option you'd like to use**
-```
-TLP_ENABLE=1
-TLP_DEFAULT_MODE=BAT
-CPU_DRIVER_OPMODE_ON_BAT=active
-CPU_SCALING_GOVERNOR_ON_BAT=powersave
-CPU_ENERGY_PERF_POLICY_ON_BAT=power
-CPU_MIN_PERF_ON_AC=100
-CPU_MAX_PERF_ON_AC=100
-CPU_MIN_PERF_ON_BAT=0
-CPU_MAX_PERF_ON_BAT=30
-CPU_BOOST_ON_AC=1 # ignore this option if your CPU doesn't support boost
-CPU_BOOST_ON_BAT=0 # ignore this option if your CPU doesn't support boost
-CPU_HWP_DYN_BOOST_ON_AC=1 # ignore this option if your CPU doesn't support dynamic boost
-CPU_HWP_DYN_BOOST_ON_BAT=0 # ignore this option if your CPU doesn't support dynamic boost
-NMI_WATCHDOG=0
-PLATFORM_PROFILE_ON_BAT=low-power
-AHCI_RUNTIME_PM_ON_BAT=auto
-WIFI_PWR_ON_AC=off
-WIFI_PWR_ON_BAT=on
-WOL_DISABLE=Y
-SOUND_POWER_SAVE_ON_AC=0
-SOUND_POWER_SAVE_ON_BAT=1
-PCIE_ASPM_ON_BAT=powersupersave
-RUNTIME_PM_ON_BAT=auto
-START_CHARGE_THRESH_BAT0=75 # ignore this option if your laptop doesn't support battery thresholds
-STOP_CHARGE_THRESH_BAT0=80 # ignore this option if your laptop doesn't support battery thresholds
+[charger]
+governor = performance
+energy_performance_preference = performance
+energy_perf_bias = balance_performance
+platform_profile = performance
+scaling_min_freq = 800000 # this value is generally supported by all processors
+scaling_max_freq = 3900000 # check your CPU's supported maximum processor frequency and change the value according to it
+turbo = always
+
+[battery] # You can change the values to be the same as charger section if you don't want to have good battery life but to have high performance on battery mode as well. You can just not include this section if you have a PC or a laptop with no battery.
+governor = powersave
+energy_performance_preference = power
+energy_perf_bias = power
+platform_profile = low-power
+scaling_min_freq = 800000 # for batteries, any frequency lower than 800 MHz is unstable but if you want and if your CPU supports it, you can decrease the value
+scaling_max_freq = 1000000 # for a balance of snappiness and power saving, maximum 1 GHz frequency is nice but of course you can increase the value if you want
+turbo = never
+enable_thresholds = true # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
+start_threshold = 75 # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
+stop_threshold = 80 # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
 ```
 ## ZRAM Size Increase (Optional) 
 - For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
