@@ -6,7 +6,7 @@ Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [par
 ```
 sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
 ```
-## Install CachyOS Repositories and CachyOS Kernel (Optional)
+## Install CachyOS Repositories and CachyOS Kernel - Optional
 - [CachyOS](https://cachyos.org/) is a **performance focused Arch-based** Linux distribution. If you would like an **out of the box experience** (it can be considered out of the box compared to Arch) and need the best performance possible, I would simply install CachyOS.
 - However, I just want to use their [greatly optimized repositories and kernel](https://github.com/CachyOS/linux-cachyos#cachyos-repositories) while configuring every other thing about my system on my own.
   - **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high loads such as gaming and switch to default **Linux** or **Linux-LTS** kernel when you need more battery life.
@@ -66,7 +66,7 @@ sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt discord
 ```
 ## Enable auto-cpufreq
 - auto-cpufreq is an automatic CPU speed & power optimizer. It is generally good for laptops but you can use it if you have a PC as well. It does everything for you.
-**Command to enable auto-cpufreq**
+- **Command to enable auto-cpufreq**
 ```
 sudo auto-cpufreq --install
 ```
