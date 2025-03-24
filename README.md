@@ -55,14 +55,15 @@ EndSection
 ```
 sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji  && sudo systemctl enable --now ufw.service
 ```
-You can install **amd-ucode** instead of **intel-ucode** if you have an AMD CPU.
+You can install `amd-ucode` instead of `intel-ucode` if you have an AMD CPU.
 ## Install Optional Packages
 ```
-sudo pacman -S capitaine-cursors papirus-icon-theme picom && paru -S flat-remix-gtk mugshot spotify zoom
+sudo pacman -S librewolf joplin-desktop onlyoffice okular easyeffects mint-themes mint-y-icons picom && paru -S xcursor-dmz mugshot spotify zoom
 ```
 ## Install Gaming Packages
+You don't have to include `prismlauncher, jre8-openjdk, jre17-openjdk and jre21-openjdk` if you're not playing Minecraft.
 ```
-sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt discord
+sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt discord prismlauncher jre8-openjdk jre17-openjdk jre21-openjdk
 ```
 ## Enable auto-cpufreq
 - auto-cpufreq is an automatic CPU speed & power optimizer. It is generally good for laptops but you can use it if you have a PC as well. It does everything for you.
