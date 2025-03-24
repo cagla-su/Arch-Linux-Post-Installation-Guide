@@ -61,7 +61,7 @@ You can install `amd-ucode` instead of `intel-ucode` if you have an AMD CPU.
 sudo pacman -S librewolf joplin-desktop onlyoffice okular easyeffects mint-themes mint-y-icons picom && paru -S xcursor-dmz mugshot spotify zoom
 ```
 ## Install Gaming Packages
-You don't have to include `prismlauncher, jre8-openjdk, jre17-openjdk and jre21-openjdk` if you're not playing Minecraft.
+You don't have to include `prismlauncher`, `jre8-openjdk`, `jre17-openjdk` and `jre21-openjdk` if you're not playing Minecraft.
 ```
 sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt discord prismlauncher jre8-openjdk jre17-openjdk jre21-openjdk
 ```
