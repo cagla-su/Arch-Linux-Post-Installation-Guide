@@ -140,7 +140,7 @@ chsh -s /usr/bin/fish # you should log out/reboot after running the command
 funcsave fish_greeting
 ```
 ## Dolby Atmos Setup (EasyEffects)
-- After launching [EasyEffects](https://github.com/wwmm/easyeffects) and setting it to launch at boot from app settings, download [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for Dolby Atmos-like profiles.
+- After launching [EasyEffects](https://github.com/wwmm/easyeffects) and setting it to launch at boot from app settings, download [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for Dolby Atmos profiles.
 - After downloading the files, move the files to a location you will remember the path of.
 - Next, in EasyEffects, open `Effects` page and click on `Add Effect`. Then, add a `Convolver` and click on convolver.
 - Click on `Impulses` and then `Import Impulse`, now add all of the .irs files you downloaded.
