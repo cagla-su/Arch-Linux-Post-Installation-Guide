@@ -26,31 +26,6 @@ timeout 5
 #console-mode keep
 auto-entries 0
 ```
-## Configure Intel GPU For Better Performance - Intel & X11 ONLY! - Optional
-**Command to configure your Intel GPU**
-```
-sudo nano /etc/X11/xorg.conf.d/20-intel.conf
-```
-```
-Section "Device"
-  Identifier "Intel Graphics"
-  Driver "modesetting"
-  Option "Backlight" "intel_backlight"
-  Option "AccelMethod" "glamor"
-  Option "TearFree" "false"
-  Option "RenderAccel" "true"
-  Option "SwapbuffersWait" "false"
-  Option "DRI" "2"
-  Option "Throttle" "false"
-  Option "FramebufferCompression" "false"
-  VideoRam 24576
-  Option "TripleBuffer" "false"
-  Option "Shadow" "false"
-  Option "LinearFramebuffer" "true"
-  Option "RelaxedFencing" "false"
-  Option "BufferCache" "true"
-EndSection
-```
 ## Install Necessary Packages
 ```
 sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji  && sudo systemctl enable --now ufw.service
@@ -58,7 +33,7 @@ sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch 
 You can install `amd-ucode` instead of `intel-ucode` if you have an AMD CPU.
 ## Install Optional Packages
 ```
-sudo pacman -S librewolf joplin-desktop onlyoffice okular easyeffects mint-themes mint-y-icons picom && paru -S xcursor-dmz mugshot spotify zoom
+sudo pacman -S zen-browser joplin-desktop onlyoffice okular easyeffects && paru -S spotify zoom
 ```
 ## Install Gaming Packages
 You don't have to include `prismlauncher`, `jre8-openjdk`, `jre17-openjdk` and `jre21-openjdk` if you're not playing Minecraft.
@@ -83,7 +58,7 @@ governor = performance
 energy_performance_preference = performance
 energy_perf_bias = balance_performance
 platform_profile = performance
-scaling_min_freq = 800000 # this value is generally supported by all processors
+scaling_min_freq = 1000000
 scaling_max_freq = 3900000 # check your CPU's supported maximum processor frequency and change the value according to it
 turbo = always
 
@@ -92,7 +67,7 @@ governor = powersave
 energy_performance_preference = power
 energy_perf_bias = power
 platform_profile = low-power
-scaling_min_freq = 800000 # for batteries, any frequency lower than 800 MHz is unstable but if you want and if your CPU supports it, you can decrease the value
+scaling_min_freq = 800000 # for laptops, any frequency lower than 800 MHz is unstable but if you want and if your CPU supports it, you can decrease the value
 scaling_max_freq = 1000000 # for a balance of snappiness and power saving, maximum 1 GHz frequency is nice but of course you can increase the value if you want
 turbo = never
 enable_thresholds = true # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
@@ -112,17 +87,128 @@ zram-size = 8192
 ```
 sudo systemctl restart systemd-zram-setup@zram0.service
 ```
-## Configure picom - X11 ONLY! - Optional
-**Command to configure picom**
+## Configure fastfetch - Optional
+**Command to configure fastfetch**
 ```
-sudo nano ~/.config/picom.conf
+sudo nano ~/.config/fastfetch/config.jsonc
 ```
 ```
-vsync = true;
-backend = "glx";
-fading = true;
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+"logo": {
+"type": "small",
+"padding": {
+        "top": 6,
+        "left": 3
+    },
+"color": {
+"1": "magenta",
+"2": "magenta"
+}
+},
+"modules": [
+    // Title
+    {
+      "type": "title",
+      "format": "{#1}╭───────────────────"
+    },
+    // System Information
+    {
+      "type": "custom",
+      "format": "{#1}│ {#}>^^< System Information >^^<"
+    },
+{
+      "type": "host",
+      "key": "│ Computer Model",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "os",
+      "key": "│ Operating System",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "kernel",
+      "key": "│ Kernel",
+      "keyColor": "magenta"
+    },
+{
+      "type": "packages",
+      "key": "│ Packages",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "{#1}│"
+    },
+    // Desktop
+    {
+      "type": "custom",
+      "format": "{#1}│ {#}>^^< Desktop >^^<",
+    },
+    {
+      "type": "de",
+      "key": "│ Desktop Environment",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "wm",
+      "key": "│ Window Manager",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "shell",
+      "key": "│ Shell",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "{#1}│"
+    },
+    // Hardware Information
+    {
+      "type": "custom",
+      "format": "{#1}│ {#}>^^< Hardware Information >^^<",
+    },
+    {
+      "type": "cpu",
+      "key": "│ Processor",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "gpu",
+      "key": "│ Graphics Card",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "memory",
+      "key": "│ Memory",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "disk",
+      "key": "│ Disk",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "{#1}│"
+    },
+    // Colors
+    {
+      "type": "colors",
+      "key": "{#separator}│",
+      "symbol": "circle"
+    },
+    // Footer
+    {
+      "type": "custom",
+      "format": "{#1}╰───────────────────"
+    }
+  ]
+}
 ```
-## Configure Fish & Fastfetch - Optional
+## Configure Fish - Optional
 - If you would like your terminal to predict what you are going to type with colorful letters, you might want to use [Fish](https://fishshell.com/) for your terminal.
 ```
 sudo pacman -S fish
@@ -130,7 +216,7 @@ sudo pacman -S fish
 ```
 chsh -s /usr/bin/fish # you should log out/reboot after running the command
 ```
-- If you would like to see **fastfetch** every time you launch terminal, you should run the commands below:
+- If you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
 ```
   function fish_greeting
   fastfetch
