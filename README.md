@@ -28,7 +28,7 @@ auto-entries 0
 ```
 ## Install Necessary Packages
 ```
-sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji  && sudo systemctl enable --now ufw.service
+sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji && sudo systemctl enable --now ufw.service
 ```
 You can install `amd-ucode` instead of `intel-ucode` if you have an AMD CPU.
 ## Install Optional Packages
