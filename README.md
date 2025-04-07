@@ -87,6 +87,23 @@ zram-size = 8192
 ```
 sudo systemctl restart systemd-zram-setup@zram0.service
 ```
+## Configure Fish - Optional
+- If you would like your terminal to predict what you are going to type with colorful letters, you might want to use [Fish](https://fishshell.com/) for your terminal.
+```
+sudo pacman -S fish
+```
+```
+chsh -s /usr/bin/fish # you should log out/reboot after running the command
+```
+- If you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
+```
+  function fish_greeting
+  fastfetch
+  end
+```
+```
+funcsave fish_greeting
+```
 ## Configure fastfetch - Optional
 **Command to configure fastfetch**
 ```
@@ -208,23 +225,6 @@ sudo nano ~/.config/fastfetch/config.jsonc
   ]
 }
 ```
-## Configure Fish - Optional
-- If you would like your terminal to predict what you are going to type with colorful letters, you might want to use [Fish](https://fishshell.com/) for your terminal.
-```
-sudo pacman -S fish
-```
-```
-chsh -s /usr/bin/fish # you should log out/reboot after running the command
-```
-- If you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
-```
-  function fish_greeting
-  fastfetch
-  end
-```
-```
-funcsave fish_greeting
-```
 ## Dolby Atmos Setup (EasyEffects)
 - After launching [EasyEffects](https://github.com/wwmm/easyeffects) and setting it to launch at boot from app settings, download [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for Dolby Atmos profiles.
 - After downloading the files, move the files to a location you will remember the path of.
@@ -232,4 +232,4 @@ funcsave fish_greeting
 - Click on `Impulses` and then `Import Impulse`, now add all of the .irs files you downloaded.
 - Last, on `Impulses` page, it will be enough to load one of the presets (you can switch among presets).
 ## Conclusion
-So, this was my Arch Linux post installation guide, I hope it is useful for you! Have a nice day ❤️
+So, this was my Arch Linux post installation guide, I hope it was useful for you! Have a nice day ❤️
