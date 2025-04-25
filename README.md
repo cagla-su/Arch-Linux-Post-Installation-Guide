@@ -7,9 +7,9 @@ Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [par
 sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
 ```
 ## Install CachyOS Repositories and CachyOS Kernel - Optional
-- [CachyOS](https://cachyos.org/) is a **performance focused Arch-based** Linux distribution. If you would like an **out of the box experience** (it can be considered out of the box compared to Arch) and need the best performance possible, I would simply install CachyOS.
+- [CachyOS](https://cachyos.org/) is a **performance focused Arch-based** Linux distribution. If you would like an **out of the box experience** (it can be considered out of the box compared to Arch) and need the best performance possible, I suggest you simply install CachyOS.
 - However, I just want to use their [greatly optimized repositories and kernel](https://github.com/CachyOS/linux-cachyos#cachyos-repositories) while configuring every other thing about my system on my own.
-  - **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high loads such as gaming and switch to default **Linux** or **Linux-LTS** kernel when you need more battery life.
+  - **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high loads such as gaming and switch to the default **Linux** or **Linux-LTS** kernel when you need more battery life.
 ### Install
 ```
 wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos
@@ -36,12 +36,11 @@ You can install `amd-ucode` instead of `intel-ucode` if you have an AMD CPU.
 sudo pacman -S zen-browser joplin-desktop onlyoffice okular easyeffects && paru -S spotify zoom
 ```
 ## Install Gaming Packages
-You don't have to include `prismlauncher`, `jre8-openjdk`, `jre17-openjdk` and `jre21-openjdk` if you're not playing Minecraft.
 ```
-sudo pacman -S cachyos-gaming-meta gamemode lib32-gamemode protonup-qt discord prismlauncher jre8-openjdk jre17-openjdk jre21-openjdk
+sudo pacman -S cachyos-gaming-applications gamemode lib32-gamemode protonup-qt vesktop
 ```
 ## Enable auto-cpufreq
-- auto-cpufreq is an automatic CPU speed & power optimizer. It is generally good for laptops but you can use it if you have a PC as well. It does everything for you.
+- auto-cpufreq is an automatic CPU speed & power optimizer. It is generally good for laptops since it does everything for you.
 - **Command to enable auto-cpufreq**
 ```
 sudo auto-cpufreq --install
@@ -228,8 +227,8 @@ sudo nano ~/.config/fastfetch/config.jsonc
 ## Dolby Atmos Setup (EasyEffects)
 - After launching [EasyEffects](https://github.com/wwmm/easyeffects) and setting it to launch at boot from app settings, download [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for Dolby Atmos profiles.
 - After downloading the files, move the files to a location you will remember the path of.
-- Next, in EasyEffects, open `Effects` page and click on `Add Effect`. Then, add a `Convolver` and click on convolver.
-- Click on `Impulses` and then `Import Impulse`, now add all of the .irs files you downloaded.
-- Last, on `Impulses` page, it will be enough to load one of the presets (you can switch among presets).
+- Next, in EasyEffects, open `Effects` page and click `Add Effect`. Next, add a `Convolver`.
+- Click `Impulses` and then `Import Impulse`, now add the .irs files you downloaded.
+- Last, in `Impulses` section, it will be enough to load one of the presets. You can always switch among presets.
 ## Conclusion
-So, this was my Arch Linux post installation guide, I hope it was useful for you! Have a nice day ❤️
+This guide was about Arch Linux post-installation! I hope the guide has been useful. Thank you for reading, have a nice day! 🐧
