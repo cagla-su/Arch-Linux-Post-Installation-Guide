@@ -8,14 +8,14 @@ sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/pa
 ```
 ## Install CachyOS Repositories and CachyOS Kernel - Optional
 - [CachyOS](https://cachyos.org/) is a **performance focused Arch-based** Linux distribution. If you would like an **out of the box experience** (it can be considered out of the box compared to Arch) and need the best performance possible, I suggest you simply install CachyOS.
-- However, I just want to use their [greatly optimized repositories and kernel](https://github.com/CachyOS/linux-cachyos#cachyos-repositories) while configuring every other thing about my system on my own.
-  - **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing tasks with high loads such as gaming and switch to the default **Linux** or **Linux-LTS** kernel when you need more battery life.
+- However, I just want to use its [greatly optimized repositories and kernel](https://github.com/CachyOS/linux-cachyos#cachyos-repositories) while configuring every other thing about my system on my own.
+  - **Be careful, do not use CachyOS kernel if you need good battery life!** However, you can still install the kernel and use it while performing resource-intensive tasks (such as gaming) and switch to the default **Linux** or **Linux-LTS** kernel when you need more battery life.
 ### Install
 ```
 wget https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -Sy && sudo pacman -S linux-cachyos
 ```
 ## systemd-boot Configuration
-**Command to configure systemd-boot**
+**The command to configure systemd-boot**
 ```
 sudo nano /boot/loader/loader.conf
 ```
@@ -33,7 +33,7 @@ sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch 
 You can install `amd-ucode` instead of `intel-ucode` if you have an AMD CPU.
 ## Install Optional Packages
 ```
-sudo pacman -S zen-browser joplin-desktop onlyoffice okular easyeffects && paru -S spotify zoom
+sudo pacman -S zen-browser onlyoffice easyeffects && paru -S spotify zoom
 ```
 ## Install Gaming Packages
 ```
@@ -87,14 +87,14 @@ zram-size = 8192
 sudo systemctl restart systemd-zram-setup@zram0.service
 ```
 ## Configure Fish - Optional
-- If you would like your terminal to predict what you are going to type with colorful letters, you might want to use [Fish](https://fishshell.com/) for your terminal.
+- If you would like your terminal to predict what you are going to type, you might want to use [Fish](https://fishshell.com/) for your terminal.
 ```
 sudo pacman -S fish
 ```
 ```
 chsh -s /usr/bin/fish # you should log out/reboot after running the command
 ```
-- If you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
+- If you would like to see **fastfetch** every time you launch terminal, you should execute the command below:
 ```
   function fish_greeting
   fastfetch
@@ -104,7 +104,7 @@ chsh -s /usr/bin/fish # you should log out/reboot after running the command
 funcsave fish_greeting
 ```
 ## Configure fastfetch - Optional
-**Command to configure fastfetch**
+**The command to configure fastfetch**
 ```
 sudo nano ~/.config/fastfetch/config.jsonc
 ```
@@ -226,9 +226,9 @@ sudo nano ~/.config/fastfetch/config.jsonc
 ```
 ## Dolby Atmos Setup (EasyEffects)
 - After launching [EasyEffects](https://github.com/wwmm/easyeffects) and setting it to launch at boot from app settings, download [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for Dolby Atmos profiles.
-- After downloading the files, move the files to a location you will remember the path of.
-- Next, in EasyEffects, open `Effects` page and click `Add Effect`. Next, add a `Convolver`.
-- Click `Impulses` and then `Import Impulse`, now add the .irs files you downloaded.
+- After downloading the files, move them to a location you will remember the path of.
+- Next, in EasyEffects, open `Effects` page and click `Add Effect`. Then, add a `Convolver`.
+- Click `Impulses` and `Import Impulse`, now add the .irs files you downloaded.
 - Last, in `Impulses` section, it will be enough to load one of the presets. You can always switch among presets.
 ## Conclusion
 This guide was about Arch Linux post-installation! I hope the guide has been useful. Thank you for reading, have a nice day! 🐧
