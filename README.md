@@ -73,19 +73,6 @@ enable_thresholds = true # do not include this option in your file if you don't 
 start_threshold = 75 # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
 stop_threshold = 80 # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
 ```
-## ZRAM Size Increase - Optional 
-- For 16 GB RAM, Arch Linux dedicates 4 GB ZRAM which is not enough for me. That's why I increase it to 8 GB. You can skip this step if you don't know what you're doing.
-- **Command to configure ZRAM**
-```
-sudo nano /etc/systemd/zram-generator.conf
-```
-```
-[zram0]
-zram-size = 8192
-```
-```
-sudo systemctl restart systemd-zram-setup@zram0.service
-```
 ## Configure Fish - Optional
 - If you would like your terminal to predict what you are going to type, you might want to use [Fish](https://fishshell.com/) for your terminal.
 ```
