@@ -1,4 +1,4 @@
-# Cutie Penguins' Arch Linux Post-Installation Guide
+# Arch Linux Post-Installation Guide
 Hello 🤭. In this guide, you will be informed about how do I prepare my Arch system after installation. So, let's begin!
 ## Install AUR Helper
 Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [paru](https://github.com/Morganamilo/paru) since it is written in [rust](https://www.rust-lang.org/).
