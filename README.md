@@ -1,69 +1,96 @@
 # Arch Linux Post-Installation Guide
-Hello 🤭. In this guide, you will be informed about how do I prepare my Arch system after installation. So, let's begin!
+Hello. In this guide, you will be informed about **how I prepare my Arch system**. If you are ready, let's begin!
 ## Install AUR Helper
 Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [paru](https://github.com/Morganamilo/paru) since it is written in [rust](https://www.rust-lang.org/).
-### Install Paru AUR Helper
 ```
 sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
 ```
-## systemd-boot Configuration
-**The command to configure systemd-boot**
+## Install CachyOS Kernel and Repositories
+CachyOS repositories contain **both Arch Linux and CachyOS packages**, which have been **re-built** with flags optimized for **performance, stability, and security**. That's why, I prefer CachyOS kernel and repositories on my Arch system.
 ```
-sudo nano /boot/loader/loader.conf
+curl -O https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -S linux-cachyos
 ```
-**How should your loader.conf file look like**
+## GRUB Configuration
 ```
-default @saved
-timeout 5
-#console-mode keep
-auto-entries 0
+sudo nano /etc/default/grub
+```
+```
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+GRUB_DISABLE_SUBMENU=y
+
+```
+```
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## Install Necessary Packages
 ```
-sudo pacman -S unrar unzip intel-ucode ufw auto-cpufreq flatpak fwupd fastfetch vlc noto-fonts-cjk noto-fonts-emoji && sudo systemctl enable --now ufw.service
+sudo pacman -S unrar unzip ufw tlp flatpak fwupd fastfetch mpv noto-fonts-cjk noto-fonts-emoji 
 ```
-You can install `amd-ucode` instead of `intel-ucode` if you have an AMD CPU.
-## Install Optional Packages
 ```
-sudo pacman -S zen-browser onlyoffice easyeffects && paru -S spotify zoom
+sudo systemctl enable --now ufw.service && sudo systemctl enable --now tlp.service
+```
+## Install Personals Packages
+```
+sudo pacman -S vivaldi easyeffects && paru -S spotify
 ```
 ## Install Gaming Packages
 ```
-sudo pacman -S cachyos-gaming-applications gamemode lib32-gamemode protonup-qt vesktop
+sudo pacman -S cachyos-gaming-applications gamemode lib32-gamemode protonplus discord
 ```
-## Enable auto-cpufreq
-- auto-cpufreq is an automatic CPU speed & power optimizer. It is generally good for laptops since it does everything for you.
-- **Command to enable auto-cpufreq**
-```
-sudo auto-cpufreq --install
-```
-After the command, you don't have to do anything further but if you would like to configure it a bit more, continue reading the step.
-### auto-cpufreq Configuration 
+## TLP Configuration
+TLP is simply an advanced power manager for laptops using Linux.
 **Command to configure auto-cpufreq**:
+Make sure to uncheck each option that are mentioned below while editing the configuration file.
 ```
-sudo nano /etc/auto-cpufreq.conf
+sudo nano /etc/tlp.conf
 ```
 ```
-[charger]
-governor = performance
-energy_performance_preference = performance
-energy_perf_bias = balance_performance
-platform_profile = performance
-scaling_min_freq = 1000000
-scaling_max_freq = 3900000 # check your CPU's supported maximum processor frequency and change the value according to it
-turbo = always
+TLP_ENABLE=1
+DISK_IDLE_SECS_ON_AC=0
+DISK_IDLE_SECS_ON_BAT=2
 
-[battery] # You can change the values to be the same as charger section if you don't want to have good battery life but to have high performance on battery mode as well. You can just not include this section if you have a PC or a laptop with no battery.
-governor = powersave
-energy_performance_preference = power
-energy_perf_bias = power
-platform_profile = low-power
-scaling_min_freq = 800000 # for laptops, any frequency lower than 800 MHz is unstable but if you want and if your CPU supports it, you can decrease the value
-scaling_max_freq = 1000000 # for a balance of snappiness and power saving, maximum 1 GHz frequency is nice but of course you can increase the value if you want
-turbo = never
-enable_thresholds = true # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
-start_threshold = 75 # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
-stop_threshold = 80 # do not include this option in your file if you don't have a battery or if you don't want to set a threshold
+MAX_LOST_WORK_SECS_ON_AC=15
+MAX_LOST_WORK_SECS_ON_BAT=60
+
+CPU_DRIVER_OPMODE_ON_AC=active
+CPU_DRIVER_OPMODE_ON_BAT=active
+
+CPU_SCALING_GOVERNOR_ON_AC=powersave
+CPU_SCALING_GOVERNOR_ON_BAT=powersave
+
+CPU_ENERGY_PERF_POLICY_ON_AC=performance
+CPU_ENERGY_PERF_POLICY_ON_BAT=power
+
+CPU_MIN_PERF_ON_AC=0
+CPU_MAX_PERF_ON_AC=100
+CPU_MIN_PERF_ON_BAT=0
+CPU_MAX_PERF_ON_BAT=30
+
+CPU_BOOST_ON_AC=1
+CPU_BOOST_ON_BAT=0
+
+CPU_HWP_DYN_BOOST_ON_AC=1
+CPU_HWP_DYN_BOOST_ON_BAT=0
+
+NMI_WATCHDOG=0
+
+PLATFORM_PROFILE_ON_AC=low-power
+PLATFORM_PROFILE_ON_BAT=low-power
+
+AHCI_RUNTIME_PM_ON_AC=on
+AHCI_RUNTIME_PM_ON_BAT=auto
+
+WIFI_PWR_ON_AC=off
+WIFI_PWR_ON_BAT=on
+
+WOL_DISABLE=Y
+
+PCIE_ASPM_ON_AC=powersupersave
+PCIE_ASPM_ON_BAT=powersupersave
+
+RUNTIME_PM_ON_AC=on
+RUNTIME_PM_ON_BAT=auto
 ```
 ## Configure Fish - Optional
 - If you would like your terminal to predict what you are going to type, you might want to use [Fish](https://fishshell.com/) for your terminal.
@@ -83,7 +110,6 @@ chsh -s /usr/bin/fish # you should log out/reboot after running the command
 funcsave fish_greeting
 ```
 ## Configure fastfetch - Optional
-**The command to configure fastfetch**
 ```
 sudo nano ~/.config/fastfetch/config.jsonc
 ```
@@ -204,10 +230,9 @@ sudo nano ~/.config/fastfetch/config.jsonc
 }
 ```
 ## Dolby Atmos Setup (EasyEffects)
-- After launching [EasyEffects](https://github.com/wwmm/easyeffects) and setting it to launch at boot from app settings, download [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for Dolby Atmos profiles.
-- After downloading the files, move them to a location you will remember the path of.
-- Next, in EasyEffects, open `Effects` page and click `Add Effect`. Then, add a `Convolver`.
-- Click `Impulses` and `Import Impulse`, now add the .irs files you downloaded.
-- Last, in `Impulses` section, it will be enough to load one of the presets. You can always switch among presets.
-## Conclusion
+- `EasyEffects` **-** `3 horizontal lines on the top right` **-** `Preferences` **-** `Launch Service at System Startup`
+- Download and extract [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for Dolby Atmos profiles.
+- `EasyEffects` **-** `Effects` **-** `Add Effect` **-** `Convolver` **-** `Impulses` **-** `Import Impulse` **-** `add the impulses` **-** `Impulses` **-** `load one of the impulses`
+- Some impulses like **Movie** can deliver poor quality sounds while listening to music. You should load a different impulse such as **Voice** in such cases.
+# Conclusion
 This guide was about Arch Linux post-installation! I hope the guide has been useful. Thank you for reading, have a nice day! 🐧
