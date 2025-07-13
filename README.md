@@ -18,7 +18,6 @@ sudo nano /etc/default/grub
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 GRUB_DISABLE_SUBMENU=y
-
 ```
 ```
 sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -39,9 +38,8 @@ sudo pacman -S vivaldi easyeffects && paru -S spotify
 sudo pacman -S cachyos-gaming-applications gamemode lib32-gamemode protonplus discord
 ```
 ## TLP Configuration
-TLP is simply an advanced power manager for laptops using Linux.
-**Command to configure auto-cpufreq**:
-Make sure to uncheck each option that are mentioned below while editing the configuration file.
+- TLP is simply an **advanced power manager** for laptops using Linux.
+- Make sure to **uncheck each option** that are mentioned below while editing the configuration file.
 ```
 sudo nano /etc/tlp.conf
 ```
@@ -230,9 +228,9 @@ sudo nano ~/.config/fastfetch/config.jsonc
 }
 ```
 ## Dolby Atmos Setup (EasyEffects)
-- `EasyEffects` **-** `3 horizontal lines on the top right` **-** `Preferences` **-** `Launch Service at System Startup`
 - Download and extract [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for Dolby Atmos profiles.
-- `EasyEffects` **-** `Effects` **-** `Add Effect` **-** `Convolver` **-** `Impulses` **-** `Import Impulse` **-** `add the impulses` **-** `Impulses` **-** `load one of the impulses`
+- `EasyEffects` **-** `3 horizontal lines on the top right` **-** `Preferences` **-** `Launch Service at System Startup`
+- **Next** : `Effects` **-** `Add Effect` **-** `Convolver` **-** `Impulses` **-** `Import Impulse` **-** `add the impulses` **-** `Impulses` **-** `load one of the impulses`
 - Some impulses like **Movie** can deliver poor quality sounds while listening to music. You should load a different impulse such as **Voice** in such cases.
 # Conclusion
 This guide was about Arch Linux post-installation! I hope the guide has been useful. Thank you for reading, have a nice day! 🐧
