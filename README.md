@@ -1,26 +1,9 @@
 # Arch Linux Post-Installation Guide
 Hello. In this guide, you will be informed about **how I prepare my Arch system**. If you are ready, let's begin!
 ## Install AUR Helper
-Normally, everyone prefers [yay](https://github.com/Jguer/yay) but I prefer [paru](https://github.com/Morganamilo/paru) since it is written in [rust](https://www.rust-lang.org/).
+Generally, users prefer [yay](https://github.com/Jguer/yay) but I prefer [paru](https://github.com/Morganamilo/paru) because I think it is better.
 ```
 sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
-```
-## Install CachyOS Kernel and Repositories
-CachyOS repositories contain **both Arch Linux and CachyOS packages**, which have been **re-built** with flags optimized for **performance, stability, and security**. That's why, I prefer CachyOS kernel and repositories on my Arch system.
-```
-curl -O https://mirror.cachyos.org/cachyos-repo.tar.xz && tar xvf cachyos-repo.tar.xz && cd cachyos-repo && sudo ./cachyos-repo.sh && sudo pacman -S linux-cachyos
-```
-## GRUB Configuration
-```
-sudo nano /etc/default/grub
-```
-```
-GRUB_DEFAULT=saved
-GRUB_SAVEDEFAULT=true
-GRUB_DISABLE_SUBMENU=y
-```
-```
-sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## Install Necessary Packages
 ```
@@ -29,14 +12,15 @@ sudo pacman -S unrar unzip ufw tlp flatpak fwupd fastfetch mpv noto-fonts-cjk no
 ```
 sudo systemctl enable --now ufw.service && sudo systemctl enable --now tlp.service
 ```
-## Install Personals Packages
+## Install Personal Packages
 ```
 sudo pacman -S vivaldi easyeffects && paru -S spotify
 ```
 ## Install Gaming Packages
 ```
-sudo pacman -S cachyos-gaming-applications gamemode lib32-gamemode protonplus discord
+sudo pacman -S gamemode lib32-gamemode steam lutris protonplus discord && paru -S heroic-games-launcher-bin
 ```
+Additionally, I follow [this guide](https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives) for Vulkan drivers.
 ## TLP Configuration
 - TLP is simply an **advanced power manager** for laptops using Linux.
 - Make sure to **uncheck each option** that are mentioned below while editing the configuration file.
@@ -91,14 +75,14 @@ RUNTIME_PM_ON_AC=on
 RUNTIME_PM_ON_BAT=auto
 ```
 ## Configure Fish - Optional
-- If you would like your terminal to predict what you are going to type, you might want to use [Fish](https://fishshell.com/) for your terminal.
+- If you would like your terminal to predict what you are going to type, I suggest that you use [Fish](https://fishshell.com/) for your terminal.
 ```
 sudo pacman -S fish
 ```
 ```
 chsh -s /usr/bin/fish # you should log out/reboot after running the command
 ```
-- If you would like to see **fastfetch** every time you launch terminal, you should execute the command below:
+- Additionally, if you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
 ```
   function fish_greeting
   fastfetch
@@ -231,6 +215,6 @@ sudo nano ~/.config/fastfetch/config.jsonc
 - Download and extract [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for Dolby Atmos profiles.
 - `EasyEffects` **-** `3 horizontal lines on the top right` **-** `Preferences` **-** `Launch Service at System Startup`
 - **Next** : `Effects` **-** `Add Effect` **-** `Convolver` **-** `Impulses` **-** `Import Impulse` **-** `add the impulses` **-** `Impulses` **-** `load one of the impulses`
-- Some impulses like **Movie** can deliver poor quality sounds while listening to music. You should load a different impulse such as **Voice** in such cases.
+- Some impulses like **Movie** can deliver poor quality while listening to music. You should load a different impulse such as **Voice** in such cases.
 # Conclusion
-This guide was about Arch Linux post-installation! I hope the guide has been useful. Thank you for reading, have a nice day! 🐧
+This guide was about Arch Linux post-installation! I hope the guide has been useful. Thank you for reading! 🐧
