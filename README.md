@@ -75,14 +75,14 @@ RUNTIME_PM_ON_AC=on
 RUNTIME_PM_ON_BAT=auto
 ```
 ## Configure Fish - Optional
-- If you would like your terminal to predict what you are going to type, I suggest that you use [Fish](https://fishshell.com/) for your terminal.
+If you would like your terminal to predict what you are going to type, I suggest that you use [Fish](https://fishshell.com/) for your terminal.
 ```
 sudo pacman -S fish
 ```
 ```
 chsh -s /usr/bin/fish # you should log out/reboot after running the command
 ```
-- Additionally, if you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
+Additionally, if you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
 ```
   function fish_greeting
   fastfetch
