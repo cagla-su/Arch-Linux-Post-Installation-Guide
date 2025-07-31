@@ -20,7 +20,7 @@ sudo pacman -S vivaldi easyeffects && paru -S spotify
 ```
 sudo pacman -S gamemode lib32-gamemode steam lutris protonplus discord && paru -S heroic-games-launcher-bin
 ```
-Additionally, I follow [this guide](https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives) for Vulkan drivers.
+Additionally, I follow [this guide](https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives) for Vulkan drivers. If you would like to learn more about Linux gaming, I suggest that you check [my Linux gaming guide](https://github.com/cagla-su/Linux-Gaming-Guide).
 ## TLP Configuration
 - TLP is simply an **advanced power manager** for laptops using Linux.
 - Make sure to **uncheck each option** that are mentioned below while editing the configuration file.
