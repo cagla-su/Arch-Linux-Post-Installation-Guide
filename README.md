@@ -37,7 +37,7 @@ sudo reflector --country Türkiye --latest 5 --sort rate --save /etc/pacman.d/mi
 sudo systemctl enable --now systemd-resolved
 ```
 - After enabling `systemd-resolved`, follow the instructions of custom DNS you want to use. My suggestion is either <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/52a59002-d12c-403b-ae21-6d63aa8d4a2f" /> [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/linux/#systemd-resolved) or <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)
-## Install <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS Repositories and Kernel
+## Installing <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS Repositories and Kernel
 <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS is a **performance-focused** Linux distribution, that's why I use their **repositories** and **kernel** for **higher performance**.
 ```
 curl -O https://mirror.cachyos.org/cachyos-repo.tar.xz
