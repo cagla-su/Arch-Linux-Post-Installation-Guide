@@ -1,5 +1,23 @@
+# Table of Contents
+- [Get Started](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#get-started)  
+  - [Installing AUR Helper](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#installing-aur-helper)
+  - [Ranking Mirrors](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#ranking-mirrors)
+  - [Installing CachyOS Repositories and Kernel](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#installing--cachyos-repositories-and-kernel) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" />
+  - [Installing Necessary Packages](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#installing-necessary-packages)
+  - [Installing Gaming Packages](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#installing-gaming-packages)
+- [System Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#system-configuration)
+  - [systemd-boot Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#systemd-boot-configuration)
+  - [TLP Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#tlp-configuration)
+  - [Little Performance Tweaks](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#little-performance-tweaks)
+    - [Reducing the vm.swappiness Value](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#reducing-the-vmswappiness-value)
+    - [Disabling NetworkManager-wait-online.service](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#disabling-networkmanager-wait-onlineservice)
+- [Terminal Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#terminal-configuration-) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
+  - [Fish Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#-fish-configuration) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" />
+  - [Fastfetch Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#fastfetch-configuration)
+- [Dolby Atmos Setup (EasyEffects)](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#-dolby-atmos-setup--easyeffects) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/076989c3-9b17-4ff4-822e-91d60e209632" /> <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/318f8066-239b-45b1-ba4c-d5de14fe597f" />
 # Arch Linux Post-Installation Guide
 Hello. In this guide, you will be informed about **how to prepare <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/17e40f3d-086e-4979-bd7a-786ce5864c66" /> Arch Linux post-installation**. If you are ready, let's begin!
+# Get Started
 ## Install AUR Helper
 Generally, users prefer [yay](https://github.com/Jguer/yay) but I prefer [paru](https://github.com/Morganamilo/paru) because I think it is better.
 ```
@@ -38,6 +56,7 @@ sudo systemctl enable --now ufw.service && sudo systemctl enable --now tlp.servi
 sudo pacman -S gamemode lib32-gamemode steam lutris prismlauncher discord && flatpak install flathub org.vinegarhq.Sober com.heroicgameslauncher.hgl com.vysp3r.ProtonPlus
 ```
 Additionally, I follow [this guide](https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives) for **Vulkan drivers**. If you would like to **learn more about Linux gaming**, I suggest that you check [my Linux gaming guide](https://github.com/cagla-su/Linux-Gaming-Guide).
+# System Configuration
 ## systemd-boot Configuration
 - Skip this part if you are using a **different bootloader** such as **GRUB**.
 ```
@@ -130,6 +149,7 @@ sudo sysctl -p
 ```
 sudo systemctl disable NetworkManager-wait-online.service
 ```
+# Terminal Configuration <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
 ## Configure <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" /> Fish - Optional
 If you would like your terminal to **predict what you are going to type**, I suggest that you use <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" /> [Fish](https://fishshell.com/) for your terminal.
 ```
