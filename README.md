@@ -72,6 +72,7 @@ sudo nano /etc/tlp.conf
 ```
 ```
 TLP_ENABLE=1
+
 DISK_IDLE_SECS_ON_AC=0
 DISK_IDLE_SECS_ON_BAT=2
 
