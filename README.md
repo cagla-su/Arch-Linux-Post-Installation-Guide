@@ -129,8 +129,8 @@ sudo sysctl -p
 ```
 sudo systemctl disable NetworkManager-wait-online.service
 ```
-## Configure Fish - Optional
-If you would like your terminal to **predict what you are going to type**, I suggest that you use [Fish](https://fishshell.com/) for your terminal.
+## Configure <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" /> Fish - Optional
+If you would like your terminal to **predict what you are going to type**, I suggest that you use <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" /> [Fish](https://fishshell.com/) for your terminal.
 ```
 sudo pacman -S fish
 ```
