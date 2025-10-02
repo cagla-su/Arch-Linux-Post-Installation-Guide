@@ -2,6 +2,7 @@
 - [Get Started](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#get-started)  
   - [Installing AUR Helper](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#installing-aur-helper)
   - [Ranking Mirrors](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#ranking-mirrors)
+  - [Using Custom DNS](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#using-custom-dns)
   - [Installing CachyOS Repositories and Kernel](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#installing--cachyos-repositories-and-kernel) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" />
   - [Installing Necessary Packages](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#installing-necessary-packages)
   - [Installing Gaming Packages](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#installing-gaming-packages)
@@ -18,12 +19,12 @@
 # Arch Linux Post-Installation Guide
 Hello. In this guide, you will be informed about **how to prepare <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/17e40f3d-086e-4979-bd7a-786ce5864c66" /> Arch Linux post-installation**. If you are ready, let's begin!
 # Get Started
-## Install AUR Helper
+## Installing AUR Helper
 Generally, users prefer [yay](https://github.com/Jguer/yay) but I prefer [paru](https://github.com/Morganamilo/paru) because I think it is better.
 ```
 sudo pacman -S --needed base-devel git && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
 ```
-## Rank Mirrors
+## Ranking Mirrors
 ```
 sudo pacman -S reflector
 ```
@@ -31,7 +32,7 @@ sudo pacman -S reflector
 sudo reflector --country Türkiye --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 - Make sure to change the country name according to the country you are living.
-## Use Custom DNS
+## Using Custom DNS
 ```
 sudo systemctl enable --now systemd-resolved
 ```
@@ -44,14 +45,14 @@ tar xvf cachyos-repo.tar.xz && cd cachyos-repo
 sudo ./cachyos-repo.sh
 sudo pacman -S linux-cachyos-bore
 ```
-## Install Necessary Packages
+## Installing Necessary Packages
 ```
 sudo pacman -S unrar unzip ufw tlp flatpak fwupd fastfetch mpv noto-fonts-cjk noto-fonts-emoji 
 ```
 ```
 sudo systemctl enable --now ufw.service && sudo systemctl enable --now tlp.service
 ```
-## Install Gaming Packages
+## Installing Gaming Packages
 ```
 sudo pacman -S gamemode lib32-gamemode steam lutris prismlauncher discord && flatpak install flathub org.vinegarhq.Sober com.heroicgameslauncher.hgl com.vysp3r.ProtonPlus
 ```
@@ -132,7 +133,7 @@ RUNTIME_PM_ON_AC=on
 RUNTIME_PM_ON_BAT=auto
 ```
 ## Little Performance Tweaks
-### Reduce the vm.swappiness Value
+### Reducing the vm.swappiness Value
 - If you have **16 GB or more RAM**, reducing `vm.swappiness` value can benefit you for **higher performance**.
   - However if you have **less than 16 GB RAM, skip this part**.
 ```
@@ -144,13 +145,13 @@ vm.swappiness=10
 ```
 sudo sysctl -p
 ```
-### Disable NetworkManager-wait-online.service
+### Disabling NetworkManager-wait-online.service
 - For a **faster boot time**, disable `NetworkManager-wait-online.service`:
 ```
 sudo systemctl disable NetworkManager-wait-online.service
 ```
 # Terminal Configuration <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
-## Configure <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" /> Fish - Optional
+## <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" /> Fish Configuration
 If you would like your terminal to **predict what you are going to type**, I suggest that you use <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" /> [Fish](https://fishshell.com/) for your terminal.
 ```
 sudo pacman -S fish
@@ -168,7 +169,7 @@ chsh -s /usr/bin/fish # you should reboot after running the command
 ```
 funcsave fish_greeting
 ```
-## Configure fastfetch - Optional
+## fastfetch Configuration
 ```
 sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
 ```
