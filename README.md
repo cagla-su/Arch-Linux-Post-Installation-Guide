@@ -17,7 +17,7 @@ sudo reflector --country Türkiye --latest 5 --sort rate --save /etc/pacman.d/mi
 ```
 sudo systemctl enable --now systemd-resolved
 ```
-- After enabling `systemd-resolved`, follow the instructions of custom DNS you want to use. My suggestion is either <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/52a59002-d12c-403b-ae21-6d63aa8d4a2f" /> [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/linux/#systemd-resolved) or <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ff72bf0c-8b37-4309-8520-ffd8892dbeeb" /> [NextDNS](https://nextdns.io/)
+- After enabling `systemd-resolved`, follow the instructions of custom DNS you want to use. My suggestion is either <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/52a59002-d12c-403b-ae21-6d63aa8d4a2f" /> [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/linux/#systemd-resolved) or <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)
 ## Install <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS Repositories and Kernel
 <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS is a **performance-focused** Linux distribution, that's why I use their **repositories** and **kernel** for **higher performance**.
 ```
@@ -37,9 +37,9 @@ sudo systemctl enable --now ufw.service && sudo systemctl enable --now tlp.servi
 ```
 sudo pacman -S gamemode lib32-gamemode steam lutris prismlauncher discord && flatpak install flathub org.vinegarhq.Sober com.heroicgameslauncher.hgl com.vysp3r.ProtonPlus
 ```
-Additionally, I follow [this guide](https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives) for Vulkan drivers. If you would like to learn more about Linux gaming, I suggest that you check [my Linux gaming guide](https://github.com/cagla-su/Linux-Gaming-Guide).
+Additionally, I follow [this guide](https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives) for **Vulkan drivers**. If you would like to **learn more about Linux gaming**, I suggest that you check [my Linux gaming guide](https://github.com/cagla-su/Linux-Gaming-Guide).
 ## systemd-boot Configuration
-- Skip this part if you are using a different bootloader such as GRUB.
+- Skip this part if you are using a **different bootloader** such as **GRUB**.
 ```
 sudo nano /boot/loader/loader.conf
 ```
@@ -51,8 +51,8 @@ timeout 5
 ```
 ls /boot/loader/entries/*
 ```
-- If you can see the custom kernel here, everything is fine.
-- If you **cannot**, looking at the output you get, go to the location of Linux kernel you are using and copy the .conf file with a different name (linux-cachyos-bore) and edit the file:
+- If you **can see the custom kernel** here, everything is fine.
+- If you **cannot**, looking at the output you get, go to the location of Linux kernel you are using and **copy the .conf file with a different name** (linux-cachyos-bore) and edit the file:
 ```
 sudo nano /boot/loader/entries/linux-cachyos-bore.conf
 ```
@@ -62,10 +62,10 @@ linux   /vmlinuz-linux-cachyos-bore
 initrd  /initramfs-linux-cachyos-bore.img
 options # DO NOT TOUCH THIS LINE
 ```
-- When you reboot, you will be able to switch to the custom kernel.
+- When you reboot, you will **be able to switch** to the custom kernel.
 ## TLP Configuration
 - TLP is simply an **advanced power manager** for laptops using Linux.
-  - If you are using a PC, install `power-profiles-daemon` instead.
+  - If you are **using PC**, install `power-profiles-daemon` instead.
 - Make sure to **uncheck each option** that are mentioned below while editing the configuration file.
 ```
 sudo nano /etc/tlp.conf
@@ -112,7 +112,7 @@ RUNTIME_PM_ON_AC=on
 RUNTIME_PM_ON_BAT=auto
 ```
 ## Little Performance Tweaks
-### vm.swappiness
+### Reduce the vm.swappiness Value
 - If you have **16 GB or more RAM**, reducing `vm.swappiness` value can benefit you for **higher performance**.
   - However if you have **less than 16 GB RAM, skip this part**.
 ```
@@ -138,7 +138,7 @@ sudo pacman -S fish
 chsh -s /usr/bin/fish # you should reboot after running the command
 ```
 - If terminal tells you that the **process has failed**, try `chsh -s /bin/fish` instead.
-Additionally, if you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
+- Additionally, if you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
 ```
   function fish_greeting
   fastfetch
