@@ -296,4 +296,4 @@ sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
 - **Next** : `Effects` **-** `Add Effect` **-** `Convolver` **-** `Impulses` **-** `Import Impulse` **-** `add the impulses` **-** `Impulses` **-** `load one of the impulses`
 - Some impulses like **Movie** can deliver poor quality while listening to music. You should load a different impulse such as **Voice** in such cases.
 # Conclusion
-This guide was about Arch Linux post-installation! I hope the guide has been useful. Thank you for reading! 🐧
+This guide was about Arch Linux post-installation! I hope the guide has been useful. Thank you for reading! <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/60e83c84-d8f8-4035-8052-08aabe1d83a1" />
