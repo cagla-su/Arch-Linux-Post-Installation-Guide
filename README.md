@@ -292,10 +292,5 @@ sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
   ]
 }
 ```
-## <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/076989c3-9b17-4ff4-822e-91d60e209632" /> Dolby Atmos Setup (<img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/318f8066-239b-45b1-ba4c-d5de14fe597f" /> EasyEffects)
-- Download and extract [these impulses](https://github.com/shuhaowu/linux-thinkpad-speaker-improvements/tree/main/ThinkPadT495) for <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/076989c3-9b17-4ff4-822e-91d60e209632" /> Dolby Atmos profiles.
-- **Launch <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/318f8066-239b-45b1-ba4c-d5de14fe597f" /> EasyEffects** : `3 horizontal lines on the top right` **-** `Preferences` **-** `Launch Service at System Startup`
-- **Next** : `Effects` **-** `Add Effect` **-** `Convolver` **-** `Impulses` **-** `Import Impulse` **-** `add the impulses` **-** `Impulses` **-** `load one of the impulses`
-- Some impulses like **Movie** can deliver poor quality while listening to music. You should load a different impulse such as **Voice** in such cases.
 # Conclusion
 This guide was about Arch Linux post-installation! I hope the guide has been useful. Thank you for reading! <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/60e83c84-d8f8-4035-8052-08aabe1d83a1" />
