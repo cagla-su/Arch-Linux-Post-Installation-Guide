@@ -88,7 +88,7 @@ options # DO NOT TOUCH THIS LINE
 - When you reboot, you will **be able to switch** to the custom kernel.
 ## TLP Configuration
 - TLP is simply an **advanced power manager** for laptops using Linux.
-  - If you are **using PC**, install `power-profiles-daemon` instead.
+  - If you are **using PC**, install [Tuned](https://medium.com/@jeromedecinco/tuned-in-linux-optimizing-system-performance-with-profiles-1c852acfb02e) instead.
 - Make sure to **uncheck each option** that are mentioned below while editing the configuration file.
 ```
 sudo nano /etc/tlp.conf
