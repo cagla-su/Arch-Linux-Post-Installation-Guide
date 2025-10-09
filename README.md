@@ -9,12 +9,12 @@
 - [System Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#system-configuration)
   - [systemd-boot Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#systemd-boot-configuration)
   - [TLP Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#tlp-configuration)
-  - [Little Performance Tweaks](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#little-performance-tweaks)
-    - [Reducing the vm.swappiness Value](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#reducing-the-vmswappiness-value)
-    - [Disabling NetworkManager-wait-online.service](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#disabling-networkmanager-wait-onlineservice)
+- [Little Performance Tweaks](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#little-performance-tweaks)
+  - [Reducing the vm.swappiness Value](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#reducing-the-vmswappiness-value)
+  - [Disabling NetworkManager-wait-online.service](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#disabling-networkmanager-wait-onlineservice)
 - [Terminal Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#terminal-configuration-) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
   - [Fish Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#-fish-configuration) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" />
-  - [Fastfetch Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#fastfetch-configuration)
+- [Fastfetch Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#fastfetch-configuration)
 - [Conclusion](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#conclusion)
 ## Türkçe Çeviri 🇹🇷
 Rehberin [Türkçe çevirisi buradadır](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md). Birebir çeviri değildir ama içerik aynıdır.
