@@ -15,7 +15,6 @@
 - [Terminal Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#terminal-configuration-) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
   - [Fish Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#-fish-configuration) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" />
   - [Fastfetch Configuration](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#fastfetch-configuration)
-- [Dolby Atmos Setup (EasyEffects)](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#-dolby-atmos-setup--easyeffects) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/076989c3-9b17-4ff4-822e-91d60e209632" /> <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/318f8066-239b-45b1-ba4c-d5de14fe597f" />
 - [Conclusion](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#conclusion)
 ## Türkçe Çeviri 🇹🇷
 Rehberin [Türkçe çevirisi buradadır](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md). Birebir çeviri değildir ama içerik aynıdır.
