@@ -108,7 +108,7 @@ chsh -s /usr/bin/fish # you should reboot after running the command
 funcsave fish_greeting
 ```
 ## fastfetch Configuration
-> [!NOTE]
+> [!WARNING]
 > - Fastfetch's default theme is *usually useful* but if you would like to **try my** fastfetch **theme**, you should **execute the commands below**.
 > - The picture below is an **example** of how **my** fastfetch theme looks like. If you did not like it, please **skip this step**.
 <img width="712" height="375" alt="image" src="https://github.com/user-attachments/assets/4839909f-dc9a-43f0-afca-14f3ac4a2dd8" />
