@@ -52,7 +52,7 @@ sudo pacman -S unrar unzip ufw flatpak fwupd fastfetch mpv noto-fonts-cjk noto-f
 
 ## Installing Gaming Packages
 ```
-sudo pacman -S gamemode lib32-gamemode steam lutris prismlauncher discord && flatpak install flathub com.heroicgameslauncher.hgl com.vysp3r.ProtonPlus
+sudo pacman -S gamemode lib32-gamemode steam lutris discord && flatpak install flathub com.heroicgameslauncher.hgl com.vysp3r.ProtonPlus
 ```
 Additionally, I follow [this guide](https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives) for **Vulkan drivers**. If you would like to **learn more about Linux gaming**, I suggest that you check [my Linux gaming guide](https://github.com/cagla-su/Linux-Gaming-Guide).
 # System Configuration
@@ -98,7 +98,7 @@ chsh -s /usr/bin/fish # you should reboot after running the command
 ```
 > [!NOTE]
 > - If terminal tells you that the **process has failed**, try `chsh -s /bin/fish` instead.
-> - Additionally, if you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
+> - Additionally, if you would like to see **fastfetch every time you launch terminal**, you should **execute the commands below**:
 ```
   function fish_greeting
   fastfetch
@@ -109,8 +109,8 @@ funcsave fish_greeting
 ```
 ## fastfetch Configuration
 > [!NOTE]
-> - Fastfetch's default theme is *usually useful* but if you would like to **try my** fastfetch **theme**, **execute the commands below**.
-> - This is an **example** of how **my** fastfetch theme looks like:
+> - Fastfetch's default theme is *usually useful* but if you would like to **try my** fastfetch **theme**, you should **execute the commands below**.
+> - The picture below is an **example** of how **my** fastfetch theme looks like. If you did not like it, please **skip this step**.
 <img width="712" height="375" alt="image" src="https://github.com/user-attachments/assets/4839909f-dc9a-43f0-afca-14f3ac4a2dd8" />
 
 ```
