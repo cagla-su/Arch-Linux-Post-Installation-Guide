@@ -109,8 +109,8 @@ funcsave fish_greeting
 ```
 ## fastfetch Configuration
 > [!NOTE]
-> Fastfetch's default theme is usually useful but if you would like to try my fastfetch theme, execute the commands below.
-> This is how my fastfetch theme looks like:
+> - Fastfetch's default theme is usually useful but if you would like to try my fastfetch theme, execute the commands below.
+> - This is how my fastfetch theme looks like:
 <img width="712" height="375" alt="image" src="https://github.com/user-attachments/assets/4839909f-dc9a-43f0-afca-14f3ac4a2dd8" />
 
 ```
