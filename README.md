@@ -38,7 +38,7 @@ sudo reflector --country Türkiye --latest 5 --sort rate --save /etc/pacman.d/mi
 ```
 sudo systemctl enable --now systemd-resolved
 ```
-- After enabling `systemd-resolved`, follow the instructions of custom DNS you want to use. My suggestion is either <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/52a59002-d12c-403b-ae21-6d63aa8d4a2f" /> [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/linux/#systemd-resolved) or <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)
+- After enabling `systemd-resolved`, follow the instructions of custom DNS you want to use. My suggestion is either <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls) or <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)
 ## Installing <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS Repositories and Kernel
 <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS is a **performance-focused** Linux distribution, that's why I use their **repositories** and **kernel** for **higher performance**.
 ```
@@ -49,14 +49,12 @@ sudo pacman -S linux-cachyos-bore
 ```
 ## Installing Necessary Packages
 ```
-sudo pacman -S unrar unzip ufw tlp flatpak fwupd fastfetch mpv noto-fonts-cjk noto-fonts-emoji 
+sudo pacman -S unrar unzip ufw flatpak fwupd fastfetch mpv noto-fonts-cjk noto-fonts-emoji && sudo systemctl enable --now ufw.service
 ```
-```
-sudo systemctl enable --now ufw.service && sudo systemctl enable --now tlp.service
-```
+
 ## Installing Gaming Packages
 ```
-sudo pacman -S gamemode lib32-gamemode steam lutris prismlauncher discord && flatpak install flathub org.vinegarhq.Sober com.heroicgameslauncher.hgl com.vysp3r.ProtonPlus
+sudo pacman -S gamemode lib32-gamemode steam lutris prismlauncher discord && flatpak install flathub com.heroicgameslauncher.hgl com.vysp3r.ProtonPlus
 ```
 Additionally, I follow [this guide](https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives) for **Vulkan drivers**. If you would like to **learn more about Linux gaming**, I suggest that you check [my Linux gaming guide](https://github.com/cagla-su/Linux-Gaming-Guide).
 # System Configuration
@@ -85,69 +83,7 @@ initrd  /initramfs-linux-cachyos-bore.img
 options # DO NOT TOUCH THIS LINE
 ```
 - When you reboot, you will **be able to switch** to the custom kernel.
-## TLP Configuration
-- TLP is simply an **advanced power manager** for laptops using Linux.
-  - If you are **using PC**, install [Tuned](https://medium.com/@jeromedecinco/tuned-in-linux-optimizing-system-performance-with-profiles-1c852acfb02e) instead.
-- Make sure to **uncheck each option** that are mentioned below while editing the configuration file.
-```
-sudo nano /etc/tlp.conf
-```
-```
-TLP_ENABLE=1
-
-DISK_IDLE_SECS_ON_AC=0
-DISK_IDLE_SECS_ON_BAT=2
-
-CPU_DRIVER_OPMODE_ON_AC=active
-CPU_DRIVER_OPMODE_ON_BAT=active
-
-CPU_SCALING_GOVERNOR_ON_AC=performance
-CPU_SCALING_GOVERNOR_ON_BAT=powersave
-
-CPU_ENERGY_PERF_POLICY_ON_AC=performance
-CPU_ENERGY_PERF_POLICY_ON_BAT=power
-
-CPU_MIN_PERF_ON_AC=0
-CPU_MAX_PERF_ON_AC=100
-CPU_MIN_PERF_ON_BAT=0
-CPU_MAX_PERF_ON_BAT=20
-
-CPU_BOOST_ON_AC=1
-CPU_BOOST_ON_BAT=0
-
-CPU_HWP_DYN_BOOST_ON_AC=1
-CPU_HWP_DYN_BOOST_ON_BAT=0
-
-NMI_WATCHDOG=0
-
-PLATFORM_PROFILE_ON_AC=performance
-PLATFORM_PROFILE_ON_BAT=low-power
-
-AHCI_RUNTIME_PM_ON_AC=on
-AHCI_RUNTIME_PM_ON_BAT=auto
-
-WIFI_PWR_ON_AC=off
-WIFI_PWR_ON_BAT=on
-
-WOL_DISABLE=Y
-
-RUNTIME_PM_ON_AC=on
-RUNTIME_PM_ON_BAT=auto
-```
-## Little Performance Tweaks
-### Reducing the vm.swappiness Value
-- If you have **16 GB or more RAM**, reducing `vm.swappiness` value can benefit you for **higher performance**.
-  - However if you have **less than 16 GB RAM, skip this part**.
-```
-sudo nano /etc/sysctl.conf
-```
-```                            
-vm.swappiness=10
-```
-```
-sudo sysctl -p
-```
-### Disabling NetworkManager-wait-online.service
+## Disabling NetworkManager-wait-online.service
 - For a **faster boot time**, disable `NetworkManager-wait-online.service`:
 ```
 sudo systemctl disable NetworkManager-wait-online.service
@@ -172,6 +108,10 @@ chsh -s /usr/bin/fish # you should reboot after running the command
 funcsave fish_greeting
 ```
 ## fastfetch Configuration
+> [!NOTE]
+> Fastfetch's default theme is usually useful but if you would like to try my fastfetch theme, execute the commands below.
+> This is how my fastfetch theme looks like:
+<img width="712" height="375" alt="image" src="https://github.com/user-attachments/assets/4839909f-dc9a-43f0-afca-14f3ac4a2dd8" />
 ```
 sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
 ```
