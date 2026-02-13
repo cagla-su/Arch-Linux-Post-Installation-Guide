@@ -57,7 +57,8 @@ sudo pacman -S gamemode lib32-gamemode steam lutris prismlauncher discord && fla
 Additionally, I follow [this guide](https://github.com/lutris/docs/blob/master/InstallingDrivers.md#arch--manjaro--other-arch-linux-derivatives) for **Vulkan drivers**. If you would like to **learn more about Linux gaming**, I suggest that you check [my Linux gaming guide](https://github.com/cagla-su/Linux-Gaming-Guide).
 # System Configuration
 ## systemd-boot Configuration
-- Skip this part if you are using a **different bootloader** such as **GRUB**.
+> [!IMPORTANT]
+> Skip this step if you are using a **different bootloader** such as **GRUB**.
 ```
 sudo nano /boot/loader/loader.conf
 ```
@@ -95,8 +96,9 @@ sudo pacman -S fish
 ```
 chsh -s /usr/bin/fish # you should reboot after running the command
 ```
-- If terminal tells you that the **process has failed**, try `chsh -s /bin/fish` instead.
-- Additionally, if you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
+> [!NOTE]
+> - If terminal tells you that the **process has failed**, try `chsh -s /bin/fish` instead.
+> - Additionally, if you would like to see **fastfetch** every time you launch terminal, you should execute the commands below:
 ```
   function fish_greeting
   fastfetch
