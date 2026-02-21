@@ -17,7 +17,7 @@ sudo systemctl enable --now systemd-resolved
 -   <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls)
   - **Hız** konusunda **fena değildir** fakat **gizlilik** konusunda **en iyisidir**.
 # NetworkManager-wait-online.service Hizmetini Devre Dışı Bırakma
-- **Daha çabuk başlatma zamanı** için, `NetworkManager-wait-online.service` hizmetini devre dışı bırakın:
+**Daha çabuk başlatma zamanı** için, `NetworkManager-wait-online.service` hizmetini devre dışı bırakın:
 ```
 sudo systemctl disable NetworkManager-wait-online.service
 ```
