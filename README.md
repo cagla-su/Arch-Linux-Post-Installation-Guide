@@ -1,9 +1,7 @@
 # Linux Post-Installation Guide
 # Table of Contents
 - [Using Custom DNS](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#using-custom-dns)
-- [System Configuration](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#system-configuration)
-  - [systemd-boot Configuration](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#systemd-boot-configuration)
-  - [Disabling NetworkManager-wait-online.service](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#disabling-networkmanager-wait-onlineservice)
+- [Disabling NetworkManager-wait-online.service](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#disabling-networkmanager-wait-onlineservice)
 - [Terminal Configuration](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#terminal-configuration-) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
   - [Fish Configuration](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#-fish-configuration) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" />
   - [Fastfetch Configuration](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#fastfetch-configuration)
@@ -11,39 +9,18 @@
 ## Türkçe Çeviri 🇹🇷
 > [!NOTE]
 > Rehberin [Türkçe çevirisi buradadır](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md). Birebir çeviri değildir ama içerik aynıdır.
-## Using Custom DNS
+# Using Custom DNS
 ```
 sudo systemctl enable --now systemd-resolved
 ```
-- After enabling `systemd-resolved`, follow the instructions of custom DNS you want to use. My suggestion is either <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls) or <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)
-# System Configuration
-## systemd-boot Configuration
-> [!IMPORTANT]
-> Skip this step if you are using a **different bootloader** such as **GRUB**.
-```
-sudo nano /boot/loader/loader.conf
-```
-```                      
-default @saved
-timeout 5
-```
-- Additionally, systemd-boot **may not detect <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS kernel**, in this case, follow these steps:
-```
-ls /boot/loader/entries/*
-```
-- If you **can see the custom kernel** here, everything is fine.
-- If you **cannot**, looking at the output you get, go to the location of Linux kernel you are using and **copy the .conf file with a different name** (linux-cachyos-bore) and edit the file:
-```
-sudo nano /boot/loader/entries/linux-cachyos-bore.conf
-```
-```
-title   Arch Linux (linux-cachyos-bore)
-linux   /vmlinuz-linux-cachyos-bore
-initrd  /initramfs-linux-cachyos-bore.img
-options # DO NOT TOUCH THIS LINE
-```
-- When you reboot, you will **be able to switch** to the custom kernel.
-## Disabling NetworkManager-wait-online.service
+- After enabling `systemd-resolved`, follow the instructions of custom DNS you want to use. My suggestions are listed below:
+-  <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/linux/)
+  - **The fastest** but **weak** when it comes to **privacy**.
+-  <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)
+  - **The second fastest** after <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> Cloudflare but **really good** when it comes to **privacy**.
+-  <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls)
+  - **Not bad** in terms of **speed** but **the best** when it comes to **privacy**. 
+# Disabling NetworkManager-wait-online.service
 - For a **faster boot time**, disable `NetworkManager-wait-online.service`:
 ```
 sudo systemctl disable NetworkManager-wait-online.service
@@ -72,7 +49,7 @@ funcsave fish_greeting
 > [!WARNING]
 > - Fastfetch's default theme is *usually useful* but if you would like to **try my** fastfetch **theme**, you should **execute the commands below**.
 > - The picture below is an **example** of how **my** fastfetch theme looks like. If you did not like it, please **skip this step**.
-<img width="712" height="375" alt="image" src="https://github.com/user-attachments/assets/4839909f-dc9a-43f0-afca-14f3ac4a2dd8" />
+<img width="722" height="343" alt="image" src="https://github.com/user-attachments/assets/51ac5587-8963-4017-83b2-d78b2aa588b0" />
 
 ```
 sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
@@ -87,8 +64,8 @@ sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
         "left": 3
     },
 "color": {
-"1": "magenta",
-"2": "magenta"
+"1": "blue",
+"2": "blue"
 }
 },
 "modules": [
@@ -105,22 +82,22 @@ sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
 {
       "type": "host",
       "key": "│ Computer Model",
-      "keyColor": "magenta"
+      "keyColor": "white"
     },
     {
       "type": "os",
       "key": "│ Operating System",
-      "keyColor": "magenta"
+      "keyColor": "white"
     },
     {
       "type": "kernel",
       "key": "│ Kernel",
-      "keyColor": "magenta"
+      "keyColor": "white"
     },
 {
       "type": "packages",
       "key": "│ Packages",
-      "keyColor": "magenta"
+      "keyColor": "white"
     },
     {
       "type": "custom",
@@ -158,22 +135,22 @@ sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
     {
       "type": "cpu",
       "key": "│ Processor",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "gpu",
       "key": "│ Graphics Card",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "memory",
       "key": "│ Memory",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "disk",
       "key": "│ Disk",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "custom",
