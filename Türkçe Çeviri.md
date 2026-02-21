@@ -1,0 +1,204 @@
+# İçindekiler
+- [Başlangıç](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md#ba%C5%9Flang%C4%B1%C3%A7)  
+  - [Özel DNS Kullanma](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md#%C3%B6zel-dns-kullanma)
+- [Sistem Yapılandırması](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md#sistem-yap%C4%B1land%C4%B1rmas%C4%B1)
+  - [systemd-boot Yapılandırması](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md#systemd-boot-yap%C4%B1land%C4%B1rmas%C4%B1)
+  - [NetworkManager-wait-online.service Hizmetini Devre Dışı Bırakma](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md#networkmanager-wait-onlineservice-hizmetini-devre-d%C4%B1%C5%9F%C4%B1-b%C4%B1rakma)
+- [Terminal Yapılandırması](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md#terminal-yap%C4%B1land%C4%B1rmas%C4%B1-) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
+  - [Fish Yapılandırması](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md#-fish-yap%C4%B1land%C4%B1rmas%C4%B1) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" />
+  - [Fastfetch Yapılandırması](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md#fastfetch-yap%C4%B1land%C4%B1rmas%C4%B1)
+- [Kapanış](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md#kapan%C4%B1%C5%9F)
+# Başlangıç
+## Özel DNS Kullanma
+```
+sudo systemctl enable --now systemd-resolved
+```
+- `systemd-resolved` hizmetini etkinleştirdikten sonra, kullanmak istediğiniz özel DNS'in adımlarını takip edin. Benim tavsiyem <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls) veya <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)'dir.
+## <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS Depolarını ve Çekirdeğini Yükleme
+<img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS **performans odaklı** bir Linux dağıtımıdır, bu yüzden **daha yüksek performans için** onların **depolarını** ve **çekirdeğini** kullanıyorum.
+```
+curl -O https://mirror.cachyos.org/cachyos-repo.tar.xz
+tar xvf cachyos-repo.tar.xz && cd cachyos-repo
+sudo ./cachyos-repo.sh
+sudo pacman -S linux-cachyos-bore
+```
+# Sistem Yapılandırması
+## systemd-boot Yapılandırması
+> [!IMPORTANT]
+> Eğer **GRUB** gibi **başka bir önyükleyici** kullanıyorsanız bu adımı atlayın.
+```
+sudo nano /boot/loader/loader.conf
+```
+```                      
+default @saved
+timeout 5
+```
+- Ek olarak, systemd-boot **<img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS çekirdeğini algılamayabilir**, bu durumda şu adımları takip edin:
+```
+ls /boot/loader/entries/*
+```
+- Eğer **özel çekirdeğinizi görebiliyorsanız**, her şey yolunda demektir.
+- Eğer **göremiyorsanız**, elde ettiğiniz çıktıya bakarak, kullandığınız Linux çekirdeğinin konumuna gidin ve **.conf dosyasını başka bir isim kullanarak kopyalayın** (linux-cachyos-bore) ve dosyayı düzenleyin:
+```
+sudo nano /boot/loader/entries/linux-cachyos-bore.conf
+```
+```
+title   Arch Linux (linux-cachyos-bore)
+linux   /vmlinuz-linux-cachyos-bore
+initrd  /initramfs-linux-cachyos-bore.img
+options # BU SATIRA DOKUNMAYIN
+```
+- Cihazınızı yeniden başlattığınızda özel çekirdeğe **geçiş yapabileceksiniz**.
+## NetworkManager-wait-online.service Hizmetini Devre Dışı Bırakma
+- **Daha çabuk başlatma zamanı** için, `NetworkManager-wait-online.service` hizmetini devre dışı bırakın:
+```
+sudo systemctl disable NetworkManager-wait-online.service
+```
+# Terminal Yapılandırması <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
+## <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" /> Fish Yapılandırması
+Eğer terminalinizin **ne yazacağınızı tahmin etmesini** isterseniz, <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" /> [Fish](https://fishshell.com/) kullanmanızı tavsiye ederim.
+```
+sudo pacman -S fish
+```
+```
+chsh -s /usr/bin/fish # komutu çalıştırdıktan sonra bilgisayarınızı yeniden başlatın
+```
+> [!NOTE]
+> - Eğer terminaliniz size **işlemin başarısız olduğunu** söylerse, `chsh -s /bin/fish`'i deneyin.
+> - Ek olarak, **terminali her çalıştırdığınızda** **fastfetch**'i görmek isterseniz, **aşağıdaki komutları çalıştırmalısınız**:
+```
+  function fish_greeting
+  fastfetch
+  end
+```
+```
+funcsave fish_greeting
+```
+## fastfetch Yapılandırması
+> [!WARNING]
+> - Fastfetch'in varsayılan teması *genellikle kullanışlıdır* fakat **benim** fastfetch **temamı denemek** isterseniz, **aşağıda bulunan komutları çalıştırmalısınız**.
+> - Aşağıda **kendi** fastfetch temamın bir **örneği** bulunmaktadır. Beğenmediyseniz lütfen **bu adımı atlayın**.
+<img width="712" height="375" alt="image" src="https://github.com/user-attachments/assets/4839909f-dc9a-43f0-afca-14f3ac4a2dd8" />
+
+```
+sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
+```
+```
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+"logo": {
+"type": "small",
+"padding": {
+        "top": 6,
+        "left": 3
+    },
+"color": {
+"1": "magenta",
+"2": "magenta"
+}
+},
+"modules": [
+    // Title
+    {
+      "type": "title",
+      "format": "{#1}╭───────────────────"
+    },
+    // System Information
+    {
+      "type": "custom",
+      "format": "{#1}│ {#}>^^< System Information >^^<"
+    },
+{
+      "type": "host",
+      "key": "│ Computer Model",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "os",
+      "key": "│ Operating System",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "kernel",
+      "key": "│ Kernel",
+      "keyColor": "magenta"
+    },
+{
+      "type": "packages",
+      "key": "│ Packages",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "{#1}│"
+    },
+    // Desktop
+    {
+      "type": "custom",
+      "format": "{#1}│ {#}>^^< Desktop >^^<",
+    },
+    {
+      "type": "de",
+      "key": "│ Desktop Environment",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "wm",
+      "key": "│ Window Manager",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "shell",
+      "key": "│ Shell",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "{#1}│"
+    },
+    // Hardware Information
+    {
+      "type": "custom",
+      "format": "{#1}│ {#}>^^< Hardware Information >^^<",
+    },
+    {
+      "type": "cpu",
+      "key": "│ Processor",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "gpu",
+      "key": "│ Graphics Card",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "memory",
+      "key": "│ Memory",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "disk",
+      "key": "│ Disk",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "{#1}│"
+    },
+    // Colors
+    {
+      "type": "colors",
+      "key": "{#separator}│",
+      "symbol": "circle"
+    },
+    // Footer
+    {
+      "type": "custom",
+      "format": "{#1}╰───────────────────"
+    }
+  ]
+}
+```
+# Kapanış
+Bu rehber Linux kurulum sonrası hakkındaydı! Umarım rehber faydalı olmuştur. Okuduğunuz için teşekkürler! <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/60e83c84-d8f8-4035-8052-08aabe1d83a1" />
+
