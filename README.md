@@ -10,7 +10,7 @@
 - [Conclusion](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide?tab=readme-ov-file#conclusion)
 ## Türkçe Çeviri 🇹🇷
 > [!NOTE]
-> Rehberin [Türkçe çevirisi buradadır](https://github.com/cagla-su/Arch-Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md). Birebir çeviri değildir ama içerik aynıdır.
+> Rehberin [Türkçe çevirisi buradadır](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e-%C3%87eviri.md). Birebir çeviri değildir ama içerik aynıdır.
 ## Using Custom DNS
 ```
 sudo systemctl enable --now systemd-resolved
