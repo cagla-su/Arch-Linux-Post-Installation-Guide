@@ -16,7 +16,7 @@ sudo systemctl enable --now systemd-resolved
 - After enabling `systemd-resolved`, follow the instructions of custom DNS you want to use. My suggestions are listed below:
 -  <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/linux/)
   - **The fastest** but **weak** when it comes to **privacy**.
--  <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)
+-  <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/ee74ad8d-6a6f-4359-ab5a-3b009f6bb527" /> [NextDNS](https://nextdns.io/)
   - **The second fastest** after <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> Cloudflare but **really good** when it comes to **privacy**.
 -  <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls)
   - **Not bad** in terms of **speed** but **the best** when it comes to **privacy**. 
