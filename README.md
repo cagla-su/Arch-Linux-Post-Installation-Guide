@@ -23,6 +23,12 @@ sudo systemctl enable --now systemd-resolved
     - **The second fastest** after <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> Cloudflare but **really good** when it comes to **privacy**.
 -  <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls)
     - **Not bad** in terms of **speed** but **the best** when it comes to **privacy**. 
+# Gaming
+I have a separate guide about **gaming on Linux**. You can check the guide [from here](https://github.com/cagla-su/Linux-Gaming-Guide).
+# Laptops
+I have a separate optimization guide for **laptops** but **mainly for Thinkpads**. You can check the guide [from here](https://github.com/cagla-su/Thinkpad-Linux-Optimization-Guide).
+# Use Android on Linux <img width="16" height="25" alt="image-removebg-preview(1)" src="https://github.com/user-attachments/assets/cec27060-1d67-48e1-8f29-a3a5b639fde8" />
+I have a separate guide about **using <img width="16" height="25" alt="image-removebg-preview(1)" src="https://github.com/user-attachments/assets/cec27060-1d67-48e1-8f29-a3a5b639fde8" /> Android on Linux**. You can check the guide [from here](https://github.com/cagla-su/Waydroid-Guide).
 # Disabling NetworkManager-wait-online.service
 For a **faster boot time**, disable `NetworkManager-wait-online.service`:
 ```
