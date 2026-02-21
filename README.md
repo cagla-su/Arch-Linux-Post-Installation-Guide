@@ -21,7 +21,7 @@ sudo systemctl enable --now systemd-resolved
 -  <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls)
     - **Not bad** in terms of **speed** but **the best** when it comes to **privacy**. 
 # Disabling NetworkManager-wait-online.service
-- For a **faster boot time**, disable `NetworkManager-wait-online.service`:
+For a **faster boot time**, disable `NetworkManager-wait-online.service`:
 ```
 sudo systemctl disable NetworkManager-wait-online.service
 ```
