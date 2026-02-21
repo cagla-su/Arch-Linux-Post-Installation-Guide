@@ -11,11 +11,11 @@ sudo systemctl enable --now systemd-resolved
 ```
 - `systemd-resolved` hizmetini etkinleştirdikten sonra, kullanmak istediğiniz özel DNS'in adımlarını takip edin. Benim tavsiyelerim aşağıdadır:
 - <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/linux/)
-  - **En hızlısıdır** fakat **gizlilik** konusunda **en zayıfıdır**.
+    - **En hızlısıdır** fakat **gizlilik** konusunda **en zayıfıdır**.
 - <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)
-  - <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> Cloudflare'den sonra **en hızlı ikinci** DNS'tir fakat **gizlilik** konusunda **oldukça iyidir**.
+    - <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> Cloudflare'den sonra **en hızlı ikinci** DNS'tir fakat **gizlilik** konusunda **oldukça iyidir**.
 -   <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls)
-  - **Hız** konusunda **fena değildir** fakat **gizlilik** konusunda **en iyisidir**.
+    - **Hız** konusunda **fena değildir** fakat **gizlilik** konusunda **en iyisidir**.
 
 # NetworkManager-wait-online.service Hizmetini Devre Dışı Bırakma
 **Daha çabuk başlatma zamanı** için, `NetworkManager-wait-online.service` hizmetini devre dışı bırakın:
