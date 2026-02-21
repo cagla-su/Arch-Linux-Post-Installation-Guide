@@ -1,45 +1,22 @@
 # İçindekiler
 - [Özel DNS Kullanma](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md#%C3%B6zel-dns-kullanma)
-- [Sistem Yapılandırması](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md#sistem-yap%C4%B1land%C4%B1rmas%C4%B1)
-  - [systemd-boot Yapılandırması](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md#systemd-boot-yap%C4%B1land%C4%B1rmas%C4%B1)
-  - [NetworkManager-wait-online.service Hizmetini Devre Dışı Bırakma](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md#networkmanager-wait-onlineservice-hizmetini-devre-d%C4%B1%C5%9F%C4%B1-b%C4%B1rakma)
+- [NetworkManager-wait-online.service Hizmetini Devre Dışı Bırakma](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md#networkmanager-wait-onlineservice-hizmetini-devre-d%C4%B1%C5%9F%C4%B1-b%C4%B1rakma)
 - [Terminal Yapılandırması](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md#terminal-yap%C4%B1land%C4%B1rmas%C4%B1-) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
   - [Fish Yapılandırması](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md#-fish-yap%C4%B1land%C4%B1rmas%C4%B1) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" />
   - [fastfetch Yapılandırması](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md#fastfetch-yap%C4%B1land%C4%B1rmas%C4%B1)
 - [Kapanış](https://github.com/cagla-su/Linux-Post-Installation-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri.md#kapan%C4%B1%C5%9F)
-## Özel DNS Kullanma
+# Özel DNS Kullanma
 ```
 sudo systemctl enable --now systemd-resolved
 ```
-- `systemd-resolved` hizmetini etkinleştirdikten sonra, kullanmak istediğiniz özel DNS'in adımlarını takip edin. Benim tavsiyem <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls) veya <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)'dir.
-# Sistem Yapılandırması
-## systemd-boot Yapılandırması
-> [!IMPORTANT]
-> Eğer **GRUB** gibi **başka bir önyükleyici** kullanıyorsanız bu adımı atlayın.
-```
-sudo nano /boot/loader/loader.conf
-```
-```                      
-default @saved
-timeout 5
-```
-- Ek olarak, systemd-boot **<img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/9077599c-872d-4ff0-8cf6-81377867c7e5" /> CachyOS çekirdeğini algılamayabilir**, bu durumda şu adımları takip edin:
-```
-ls /boot/loader/entries/*
-```
-- Eğer **özel çekirdeğinizi görebiliyorsanız**, her şey yolunda demektir.
-- Eğer **göremiyorsanız**, elde ettiğiniz çıktıya bakarak, kullandığınız Linux çekirdeğinin konumuna gidin ve **.conf dosyasını başka bir isim kullanarak kopyalayın** (linux-cachyos-bore) ve dosyayı düzenleyin:
-```
-sudo nano /boot/loader/entries/linux-cachyos-bore.conf
-```
-```
-title   Arch Linux (linux-cachyos-bore)
-linux   /vmlinuz-linux-cachyos-bore
-initrd  /initramfs-linux-cachyos-bore.img
-options # BU SATIRA DOKUNMAYIN
-```
-- Cihazınızı yeniden başlattığınızda özel çekirdeğe **geçiş yapabileceksiniz**.
-## NetworkManager-wait-online.service Hizmetini Devre Dışı Bırakma
+- `systemd-resolved` hizmetini etkinleştirdikten sonra, kullanmak istediğiniz özel DNS'in adımlarını takip edin. Benim tavsiyelerim aşağıdadır:
+- <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/linux/)
+  - **En hızlısıdır** fakat **gizlilik** konusunda **en zayıfıdır**.
+- <img width="16" height="25" alt="image-removebg-preview" src="https://github.com/user-attachments/assets/17f508fa-4c9c-4d74-9f27-f7afaed205c6" /> [NextDNS](https://nextdns.io/)
+  - <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> Cloudflare'den sonra **en hızlı ikinci** DNS'tir fakat **gizlilik** konusunda **oldukça iyidir**.
+-   <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls)
+  - **Hız** konusunda **fena değildir** fakat **gizlilik** konusunda **en iyisidir**.
+# NetworkManager-wait-online.service Hizmetini Devre Dışı Bırakma
 - **Daha çabuk başlatma zamanı** için, `NetworkManager-wait-online.service` hizmetini devre dışı bırakın:
 ```
 sudo systemctl disable NetworkManager-wait-online.service
@@ -68,7 +45,7 @@ funcsave fish_greeting
 > [!WARNING]
 > - Fastfetch'in varsayılan teması *genellikle kullanışlıdır* fakat **benim** fastfetch **temamı denemek** isterseniz, **aşağıda bulunan komutları çalıştırmalısınız**.
 > - Aşağıda **kendi** fastfetch temamın bir **örneği** bulunmaktadır. Beğenmediyseniz lütfen **bu adımı atlayın**.
-<img width="712" height="375" alt="image" src="https://github.com/user-attachments/assets/4839909f-dc9a-43f0-afca-14f3ac4a2dd8" />
+<img width="722" height="343" alt="image" src="https://github.com/user-attachments/assets/51ac5587-8963-4017-83b2-d78b2aa588b0" />
 
 ```
 sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
@@ -83,8 +60,8 @@ sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
         "left": 3
     },
 "color": {
-"1": "magenta",
-"2": "magenta"
+"1": "blue",
+"2": "blue"
 }
 },
 "modules": [
@@ -101,22 +78,22 @@ sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
 {
       "type": "host",
       "key": "│ Computer Model",
-      "keyColor": "magenta"
+      "keyColor": "white"
     },
     {
       "type": "os",
       "key": "│ Operating System",
-      "keyColor": "magenta"
+      "keyColor": "white"
     },
     {
       "type": "kernel",
       "key": "│ Kernel",
-      "keyColor": "magenta"
+      "keyColor": "white"
     },
 {
       "type": "packages",
       "key": "│ Packages",
-      "keyColor": "magenta"
+      "keyColor": "white"
     },
     {
       "type": "custom",
@@ -154,22 +131,22 @@ sudo mkdir ~/.config/fastfetch/ && sudo nano ~/.config/fastfetch/config.jsonc
     {
       "type": "cpu",
       "key": "│ Processor",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "gpu",
       "key": "│ Graphics Card",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "memory",
       "key": "│ Memory",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "disk",
       "key": "│ Disk",
-      "keyColor": "magenta"
+      "keyColor": "cyan"
     },
     {
       "type": "custom",
