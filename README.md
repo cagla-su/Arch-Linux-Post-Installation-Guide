@@ -1,6 +1,9 @@
 # Linux Post-Installation Guide
 # Table of Contents
 - [Using Custom DNS](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#using-custom-dns)
+- [Gaming](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#gaming)
+- [Laptops](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#laptops)
+- [Use Android on Linux](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#use-android-on-linux-) <img width="16" height="25" alt="image-removebg-preview(1)" src="https://github.com/user-attachments/assets/cec27060-1d67-48e1-8f29-a3a5b639fde8" />
 - [Disabling NetworkManager-wait-online.service](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#disabling-networkmanager-wait-onlineservice)
 - [Terminal Configuration](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#terminal-configuration-) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/ae34a1ca-71fe-4bf4-b1df-ddee947edaf5" />
   - [Fish Configuration](https://github.com/cagla-su/Linux-Post-Installation-Guide?tab=readme-ov-file#-fish-configuration) <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/a4a4ce43-0e32-406f-951a-8761be2f9c5e" />
