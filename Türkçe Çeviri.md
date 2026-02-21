@@ -16,7 +16,12 @@ sudo systemctl enable --now systemd-resolved
     - <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/c80c1141-f1a6-43ce-a153-2566c6a28295" /> Cloudflare'den sonra **en hızlı ikinci** DNS'tir fakat **gizlilik** konusunda **oldukça iyidir**.
 -   <img width="16" height="25" alt="image" src="https://github.com/user-attachments/assets/b3b22da0-bb93-4ad8-897d-60023db6aa5c" /> [Mullvad DNS](https://mullvad.net/en/help/dns-over-https-and-dns-over-tls)
     - **Hız** konusunda **fena değildir** fakat **gizlilik** konusunda **en iyisidir**.
-
+# Oyun Oynama
+**Linux'ta oyun oynama** hakkında ayrı bir rehberim mevcuttur. Rehbere [buradan ulaşabilirsiniz](https://github.com/cagla-su/Linux-Gaming-Guide/blob/main/T%C3%BCrk%C3%A7e%20%C3%87eviri/linuxta-oyun-oynama-rehberi.md).
+# Dizüstü Bilgisayarlar
+**Dizüstü bilgisayarlar** ama **esas olarak Thinkpad bilgisayarlar için** ayrı bir rehberim mevcuttur. Rehbere [buradan ulaşabilirsiniz](https://github.com/cagla-su/Thinkpad-Linux-Optimization-Guide).
+# Linux'ta Android Kullanma
+**Linux'ta <img width="16" height="25" alt="image-removebg-preview(1)" src="https://github.com/user-attachments/assets/cec27060-1d67-48e1-8f29-a3a5b639fde8" /> Android kullanma** hakkında ayrı bir rehberim mevcuttur. Rehbere [buradan ulaşabilirsiniz](https://github.com/cagla-su/Waydroid-Guide/blob/main/Waydroid-Rehberi.md).
 # NetworkManager-wait-online.service Hizmetini Devre Dışı Bırakma
 **Daha çabuk başlatma zamanı** için, `NetworkManager-wait-online.service` hizmetini devre dışı bırakın:
 ```
